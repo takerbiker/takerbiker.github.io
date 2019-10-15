@@ -1,23 +1,265 @@
----
-layout: default
----
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Bear's Garage Dashboard</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="images/favicon.png" rel="icon" type="image/x-icon" />
+    <link href="styles.css" type="text/css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="data.js"></script>
+    <script type="text/javascript" src="app.js"></script>
 
-<div class="home">
+  </head>
 
-  <h1 class="page-heading">Posts</h1>
+  <body>
+    <!-- Top navigation bar  -->
+    <nav class="navbar navbar-static-top navbar-dark bg-dark flex-md-nowrap p-0 shadow ">
+      <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="index.html">Bear's Garage</a>
+      <input class="search form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="small" id="myInput">
+      <ul class="navbar-nav px-3">
+        <li class="nav-item text-nowrap">
+          <button type="submit" class="searchBar btn btn-light ">Search</a>
+        </li>
+      </ul>
+    </nav>
 
-  <ul class="post-list">
-    {% for post in site.posts %}
-      <li>
-        <span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</span>
+    <!-- Sidebar navigation -->
+    <div class="container-fluid">
+      <div class="row">
+        <nav class="col-md-2 d-none d-md-block bg-light ">
+          <div class="sidebar-sticky">
+            <ul class="nav flex-column">
 
-        <h2>
-          <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
-        </h2>
-      </li>
-    {% endfor %}
-  </ul>
+              <!-- Homepage -->
+              <li class="nav-item">
+                <a class="nav-link active" href="index.html">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+                  Home <span class="sr-only">(current)</span>
+                </a>
+              </li>
 
-  <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | prepend: site.baseurl }}">via RSS</a></p>
+              <!-- Customer spent -->
+              <li class="nav-item">
+                <a class="nav-link customerSpentBtn" href="#">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file"><path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path><polyline points="13 2 13 9 20 9"></polyline></svg>
+                  Lifetime Customer Value
+                </a>
+              </li>
 
-</div>
+              <!-- Customer contacts -->
+              <li class="nav-item">
+                <a class="nav-link getCustomerContacts" href="#">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-users"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                  Customer Contacts
+                </a>
+              </li>
+
+              <!-- Insurance claims -->
+              <li class="nav-item">
+                <a class="nav-link insuranceHistoryBtn" href="#">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-layers"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
+                  Insurance Payout
+                </a>
+              </li>
+            </ul>
+
+            <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+              <span>Others</span>
+            </h6>
+            <!-- Premium calculator -->
+            <ul class="nav flex-column mb-2">
+              <li class="nav-item">
+                <a class="nav-link premiumCalculator" href="#">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                  Premium calculator
+                </a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+        <!-- End of navigation -->
+
+    <!-- DISPLAY SECTION CONFIGURATIONS -->
+    <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4"><div class="chartjs-size-monitor" style="position: absolute; left: 0px; top: 0px; right: 0px; bottom: 0px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;"><div class="chartjs-size-monitor-expand" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:1000000px;height:1000000px;left:0;top:0"></div></div>
+
+      <!-- Start of display section -->
+      <div class="mainDisplay chartjs-size-monitor-shrink" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:200%;height:200%;left:0; top:0"></div></div></div>
+
+        <!-- First homepage section Chart graph -->
+        <canvas id="lineChart">
+          <h1 class="h2"></h1>
+        </canvas>
+
+        <!-- Secondary Homepage section -->
+        <div class="frontpage">
+          <h4>Overdue Payments</h4>
+          <div class="mainDisplay d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+            <!-- Table O$P$ -->
+            <div class="table-responsive">
+              <table class="table table-striped table-sm">
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>Name</th>
+                    <th>Amount</th>
+                    <th>Due Date</th>
+                    <th>Misc</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>1</td>
+                    <td>Sabri Marzuqi</td>
+                    <td>1000</td>
+                    <td>1/6/19</td>
+                    <td>Paid $1700. Sent letter of demand</td>
+                  </tr>
+                  <tr>
+                    <td>2</td>
+                    <td>Leonard Quoh</td>
+                    <td>450</td>
+                    <td>18/9/19</td>
+                    <td>Preorder Nissin</td>
+                  </tr>
+                  <tr>
+                    <td>3</td>
+                    <td>Muhamad Syarafuddin</td>
+                    <td>2800</td>
+                    <td>7/10/19</td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            </div>
+        </div>
+
+        <!-- Table that will be dynamically created -->
+        <div class="row table-responsive tableOutput">
+            <table class="table table-striped table-sm">
+              <thead>
+                <tr class="tableHeader text-center">
+                </tr>
+              </thead>
+              <tbody class="tableBody text-center">
+              </tbody>
+            </table>
+        </div>  <!-- End of table section -->
+
+        <!-- Insurance premium calculator -->
+        <div class="container insurance">
+        <!-- <div class="row col-md-9 col-lg-8 mx-auto"> -->
+
+          <!-- Calculator form -->
+          <form class="text-center insurance">
+            <!-- FORM -->
+            <div class="card row text-center insuranceDiv" style="width: 40rem;" >
+              <img src="images/background.jpg" class="card-img-top">
+              <div class="card-body">
+                <h4 class="card-title">Insurance Premium Calculator</h5>
+                  <p>Customer is buying a brand new <input type="text" placeholder="Yamaha/Honda" id="brand"  />
+                          motorcycle of <input type="text" placeholder="150" id="capacity" />
+                          CC and would like to purchase a <input type="text" placeholder="comprehensive/third party/tpft" id="insurance" />
+                          insurance coverage for his/her new bike! He/She is <input type="text" placeholder="25" id="age" />
+                          years old and has been riding for <input type="text" placeholder="1" id="experience" />
+                          year(s). In the past, he/she has made <input type="text" placeholder="0" id="input-box" />
+                          claim(s) with a total value of $<input type="text" placeholder="8000" id="claims" />.
+                  </p>
+                  <!-- Next button -->
+                  <button class="btn btn-dark formSubmit" button type="submit">Next</button>
+              </div>
+
+            </div>
+          </form>
+        </div>
+      </div> <!-- End of display section -->
+
+    </main>
+  </body>
+</html>
+
+
+
+
+
+<!-- Additional Features If I want calendar buttons etc -->
+
+
+<!-- Overview summary -->
+<!-- <li class="nav-item">
+  <a class="nav-link overviewBtn" href="#">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-bar-chart-2"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
+    Overview
+  </a>
+</li> -->
+
+
+
+<!-- <h1 class="h2">Overview</h1> -->
+
+<!-- // I am buying a brand new ___, ____(CC) motorcycle and would like to purchase ___ (type of insurance). I am ____ (years old) this year. I have been riding for ___ years and have made ____(claims) -->
+<!-- <input type="text" placeholder="How old are you?" id="input-box" />
+<input type="submit"> -->
+
+<!-- FORM FOR INSURANCE -->
+<!-- <form>
+
+  <p>I am buying a brand new
+    <select name="brand" id="brand">
+      <option value="yamaha">Yamaha</option> 7pts
+      <option value="honda">Honda</option> 17pts
+      <option value="vespa">Vespa</option> 18pts
+    </select>
+    motorcycle of
+    <select name="capacity" id="capacity">
+      <option value="yamaha"><=125</option> 7
+      <option value="honda">125 - 200</option> 10
+      <option value="fiat">200 - 400</option> 400
+      <option value="audi">401 - 750</option> 26
+      <option value="audi">750 - 1200</option> 35
+    </select>
+    CC and would like to purchase a
+    <select name="insurance" id="insurance">
+      <option value="comprehensive">comprehensive</option> 54
+      <option value="tpft">Third Party Fire & Theft</option> 39
+      <option value="thirdParty">Third Party</option> 25
+    </select>
+    coverage for my new bike! I belong to the
+    <select name="age" id="age">
+      <option value="age1">21 and below</option> 41pts
+      <option value="age2">22-23</option> 29pts
+      <option value="age3">24</option> 24.5pts
+      <option value="age4">25</option>  19pts
+      <option value="age5">26-27</option>  13.4pts
+      <option value="age6">28-30</option>   8pts
+      <option value="age7">31 and above</option>
+    </select>
+    age group. I have been riding for
+    <select name="experience" id="experience">
+      <option value="experience1">less than 2 years</option> 13.5pts
+      <option value="experience2">more than 2 years</option>
+    </select>
+    and have made claims of
+    <select name="claims" id="claims">
+      <option value="claim1">less than or equal to $10 000</option> okay
+      <option value="claim2">between $10 000 and $20 000</option> 25
+      <option value="claim3">more than $20 000</option> error check with underwriter
+    </select>
+
+</p>
+  <input type="submit" class="insuranceBtn">
+</form>
+ -->
+
+<!--
+Select one from the given options:
+     <select id="select1">
+         <option value="free">Free</option>
+         <option value="basic">Basic</option>
+         <option value="premium">Premium</option>
+     </select>
+ </p>
