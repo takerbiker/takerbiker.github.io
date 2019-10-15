@@ -308,7 +308,7 @@ $(() => {
         console.log("If you choose NTUC, your premium is $13473.26");
         break;
         default:
-        console.log("default");
+        console.log("Error, please try again!");
       }
     }
 
@@ -324,58 +324,45 @@ $(() => {
     };
 
 //////////////////////////////BUTTONS//////////////////////////////
-  //Customer lifetime Value spent button
-  $(".customerSpentBtn").on("click", () => {
+  //TO CLEAR DISPLAY
+  const clearDisplay = () => {
     $("#lineChart").hide();
     $(".frontpage").hide();
-    $("table").removeClass("customerContacts insuranceHistory");
     $(".tableBody").empty();
     $(".tableHeader").empty();
     $(".title").remove();
+  }
+
+  //Customer lifetime Value spent button
+  $(".customerSpentBtn").on("click", () => {
+    clearDisplay();
+    $("table").removeClass("customerContacts insuranceHistory");
     $(".insurance").css("display","none");
-
-
     $createCustomerSpentTable();
   });
 
   // Customer contacts
   $(".getCustomerContacts").on("click", () => {
-    $("#lineChart").hide();
-    $(".frontpage").hide();
+    clearDisplay();
     $("table").removeClass("customerSpent insuranceHistory");
-    $(".tableBody").empty();
-    $(".tableHeader").empty();
-    $(".title").remove();
     $(".insurance").css("display","none");
-
-
     $createCustomerContacts();
   });
 
   // Insurance history
   $(".insuranceHistoryBtn").on("click", () => {
-    $("#lineChart").hide();
-    $(".frontpage").hide();
+    clearDisplay();
     $("table").removeClass("customerContacts customerSpent");
-    $(".tableBody").empty();
-    $(".tableHeader").empty();
-    $(".title").remove();
     $(".insurance").css("display","none");
     $createInsuranceHistoryTable();
   });
 
   // Premium calculator
   $(".premiumCalculator").on("click", () => {
+    clearDisplay();
     $(".tableOutput").hide();
-    $("#lineChart").hide();
-    $(".frontpage").hide();
     $("table").removeClass("customerContacts customerSpent");
-    $(".tableBody").empty();
-    $(".tableHeader").empty();
-    $(".title").remove();
     $(".insurance").css("display","block");
-    // $(".title").remove();
-    // premiumCalculatorDisplay();
   });
 
   // SEARCH BAR & BUTTON
@@ -420,16 +407,12 @@ $(() => {
     checkNtuc();
     console.log(points);
     // console.log("If you choose NTUC, your premium is" + premium);
-    const $outcome = $("<div>").addClass("outcome").text("If you choose NTUC, your premium is $" + premium + "per annum.") ;
+    const $outcome = $("<div>").addClass("outcome").text("If you choose NTUC, your premium is $" + premium + " per annum.") ;
     $(".card-body").append($outcome);
-
   });
 
-
-
-
-
 }) //CLOSING DONT DELETE
+
 // //LOGIC FOR LIFETIME VALUE OF CUSTOMER
 //
 // let lifeTimeObj = {};
@@ -515,62 +498,3 @@ $(() => {
 
 
   // } //end of createTableFunction
-
-  // //CREATE BUTTONS DYNAMICALLY
-  //
-  // $(".search").on("submit", () => {
-  //   event.preventDefault;
-  //
-  //   const $userInput = $('input[type="text"]').val();
-  //   if $userInput ===
-  // })
-  //
-  //
-  //
-  //                 // Search Bar functionality
-  //                 const searchBarFunctionality = () => {
-  //                   $("#searchBar").on("submit", () => {
-  //                     const $inputValue = $("#input-box").val();
-  //                     console.log($inputValue);
-  //                   }
-  //
-  //
-  //                   //To search for customerValue
-  //                   // if ($inputValue === data[i].Contact.Name) {
-  //                   //   console.log(data[i].Contact.Name);
-  //                   // }
-  //
-  //                 )}
-  //
-  //
-  //
-  //
-  //                 $("form").on("submit", (event) => {
-  //                 	const inputValue = $("#input-box").val();
-  //                 	console.log(inputValue);
-  //                 	event.preventDefault();
-  //                 	$(event.currentTarget).trigger(‘reset’);
-  //                 	});
-
-
-
-
-
-
-    // For customer spent table
-    //Console.log (Names and the amount they've spent)
-    // for (element of data) {
-    //   console.log(element.Contact.Name);
-    //   console.log(element.AmountPaid);
-    // }
-
-
-
-    // //Customer Name
-    // $("<tr>").appendTo($(".tableBody"));
-    // let $customerName = $("<td>" + data[i].Contact.Name + "</td>");
-    // $(".tableBody").append($customerName);
-    //
-    // //Amount customer spent
-    // let $customerAmt = $("<td>" + data[i].AmountPaid + "</td>");
-    // $(".tableBody").append($customerAmt);
