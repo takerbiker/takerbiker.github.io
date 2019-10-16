@@ -1,4 +1,4 @@
-// console.log($("Working yo"));
+console.log($("Working yo"));
 
 $(() => {
 
@@ -175,7 +175,7 @@ $(() => {
 
 
   //////////////////////////////INSURANCE PREMIUM CALCULATOR SECTION//////////////////////////////
-  let points = 11;
+  let points=11;
   let premium;
 
   //Brands and models
@@ -194,6 +194,7 @@ $(() => {
 
   //Check age
   const checkAge = () => {
+
 
   // Age conditional depending on answer
   const inputValue = $("#age").val();
@@ -323,6 +324,12 @@ $(() => {
       checkPremium(points);
     };
 
+  //Reset Points for insurance prem calculation
+  const pointsReset = () => {
+    points = 11;
+  }
+
+
 //////////////////////////////BUTTONS//////////////////////////////
   //TO CLEAR DISPLAY
   const clearDisplay = () => {
@@ -403,16 +410,30 @@ $(() => {
 
   //Insurance premium calculator on click
   $(".formSubmit").on("click", () => {
+    pointsReset();
     $(".outcome").hide();
     checkNtuc();
     console.log(points);
-    // console.log("If you choose NTUC, your premium is" + premium);
     const $outcome = $("<div>").addClass("outcome").text("If you choose NTUC, your premium is $" + premium + " per annum.") ;
     $(".card-body").append($outcome);
   });
 
 }) //CLOSING DONT DELETE
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+////CODE GRAVEYARD
 // //LOGIC FOR LIFETIME VALUE OF CUSTOMER
 //
 // let lifeTimeObj = {};
@@ -439,62 +460,43 @@ $(() => {
 
 
 
-// //BUTTONS
-// //Customer spent button
-// $(".customerSpentBtn").one("click", () => {
-//   // $(".mainDisplay").remove();
-//   $createCustomerSpentTable;
-// });
+
+
+// const $createCustomerSpentTable = () => {
+//   //To create array to store each customer's name and amount spent
+//   let eachCustomerLifeTimeSpendArray = [];
+//   let allCustomerLifeTimeSpendArray = [];
 //
-// // Customer contacts
-// $(".getCustomerContacts").one("click", $createCustomerContacts);
+//   $("table").addClass("customerSpent");
 //
-// // Insurance history
-// $(".insuranceHistoryBtn").one("click", $createInsuranceHistoryTable);
+//   // $(".tableOutput").prepend('<input id="searchBox" class="searchBar" type="text">');
+//   //Table title
+//   const $title = $("<h2>").text("Lifetime Customer Value").addClass("textCenter title");
+//   $(".tableOutput").prepend($title);
 //
-// //Overview Report Buttons
-// $(".overviewBtn").one("click", $createChartOverview);
-
-
-
-  // const $createCustomerSpentTable = () => {
-  //   //To create array to store each customer's name and amount spent
-  //   let eachCustomerLifeTimeSpendArray = [];
-  //   let allCustomerLifeTimeSpendArray = [];
-  //
-  //   $("table").addClass("customerSpent");
-  //
-  //   // $(".tableOutput").prepend('<input id="searchBox" class="searchBar" type="text">');
-  //   //Table title
-  //   const $title = $("<h2>").text("Lifetime Customer Value").addClass("textCenter title");
-  //   $(".tableOutput").prepend($title);
-  //
-  //   //Create tableheader on click
-  //   $(".tableHeader").append($("<th>Name</th>"));
-  //   $(".tableHeader").append($("<th>Amount(S$)</th>"));
-  //
-  //   for (let i=0;i<=data.length-1;i++) {
-  //
-  //     //To retrieve customer's name
-  //     let $customerName = data[i].Contact.Name;
-  //     //To retrieve customer's amount spent
-  //     let $customerAmt = data[i].AmountPaid;
-  //
-  //     //CREATING AN ARRAY OF ARRAYS. EACH ARRAY = Customer, amount he spent
-  //     eachCustomerLifeTimeSpendArray.push($customerName, $customerAmt);
-  //     allCustomerLifeTimeSpendArray.push(eachCustomerLifeTimeSpendArray);
-  //   } //end of for loop
-  //
-  //
-  //   for (let i=0;i<=allCustomerLifeTimeSpendArray.length-1;i++) {
-  //
-  //     $("<tr>").appendTo($(".tableBody"));
-  //     let $customerName = $("<td>" + allCustomerLifeTimeSpendArray[i][0] + "</td>");
-  //     $(".tableBody").append($customerName);
-  //
-  //     let $customerAmt = $("<td>" + allCustomerLifeTimeSpendArray[i][1] + "</td>");
-  //     $(".tableBody").append($customerAmt);
-  //   }
-
-
-  // } //end of createTableFunction
+//   //Create tableheader on click
+//   $(".tableHeader").append($("<th>Name</th>"));
+//   $(".tableHeader").append($("<th>Amount(S$)</th>"));
+//
+//   for (let i=0;i<=data.length-1;i++) {
+//
+//     //To retrieve customer's name
+//     let $customerName = data[i].Contact.Name;
+//     //To retrieve customer's amount spent
+//     let $customerAmt = data[i].AmountPaid;
+//
+//     //CREATING AN ARRAY OF ARRAYS. EACH ARRAY = Customer, amount he spent
+//     eachCustomerLifeTimeSpendArray.push($customerName, $customerAmt);
+//     allCustomerLifeTimeSpendArray.push(eachCustomerLifeTimeSpendArray);
+//   } //end of for loop
+//
+//
+//   for (let i=0;i<=allCustomerLifeTimeSpendArray.length-1;i++) {
+//
+//     $("<tr>").appendTo($(".tableBody"));
+//     let $customerName = $("<td>" + allCustomerLifeTimeSpendArray[i][0] + "</td>");
+//     $(".tableBody").append($customerName);
+//
+//     let $customerAmt = $("<td>" + allCustomerLifeTimeSpendArray[i][1] + "</td>");
+//     $(".tableBody").append($customerAmt);
+//   }
