@@ -117,6 +117,7 @@ $(() => {
     } //End of for loop
   } //end of createTableFunction
 
+
   //////////////////////////////CHART GRAPH//////////////////////////////
   const chartColors = ["#007bff","#28a745","#333333","#c3e6cb","#dc3545","#6c757d", "#FE5C5C"];
 
@@ -433,7 +434,7 @@ $(() => {
 
 
 
-////CODE GRAVEYARD
+////////////////////////////////////////////////////////////CODE GRAVEYARD////////////////////////////////////////////////////////////
 // //LOGIC FOR LIFETIME VALUE OF CUSTOMER
 //
 // let lifeTimeObj = {};
@@ -457,11 +458,6 @@ $(() => {
 //   console.log(key); //For keys
 //   console.log(lifeTimeObj[key]); //For values
 // }
-
-
-
-
-
 // const $createCustomerSpentTable = () => {
 //   //To create array to store each customer's name and amount spent
 //   let eachCustomerLifeTimeSpendArray = [];
