@@ -2,7 +2,10 @@ console.log($("Working yo"));
 
 $(() => {
 
-//////////////////////////////CREATE TABLE FUNCTIONS//////////////////////////////
+//-----------------------------------------------------------
+//----------------CREATE TABLE FUNCTIONS---------------------
+//-----------------------------------------------------------
+
   //Function to create table to display Amount customer has spent
   const $createCustomerSpentTable = () => {
 
@@ -12,7 +15,7 @@ $(() => {
     $(".tableOutput").prepend($title);
 
     //Create tableheader on click
-    $(".tableHeader").append($("<th>Name</th>"));
+    $(".tableHeader").append($("<th>Name</th>").append);
     $(".tableHeader").append($("<th>Amount (S$)</th>"));
 
     for (let i=0;i<=data.length-1;i++) {
@@ -24,7 +27,7 @@ $(() => {
       let $customerName = $("<td>" + data[i].Contact.Name + "</td>");
       $(".tableBody").append($customerName);
 
-      //To push into customers Name array
+      //To push into customers Name array (NOT NECESSARY FOR NOW)
       // customerNameArray.push(data[i].Contact.Name);
       // console.log(customerNameArray);
 
@@ -117,8 +120,10 @@ $(() => {
     } //End of for loop
   } //end of createTableFunction
 
+  //-----------------------------------------------------------
+  //----------------CHART GRAPH SECTION------------------------
+  //-----------------------------------------------------------
 
-  //////////////////////////////CHART GRAPH//////////////////////////////
   const chartColors = ["#007bff","#28a745","#333333","#c3e6cb","#dc3545","#6c757d", "#FE5C5C"];
 
   let $lineChart = $("#lineChart");
@@ -174,12 +179,14 @@ $(() => {
   }
   $createChartOverview();
 
+  //-----------------------------------------------------------
+  //----------INSURANCE PREMIUM CALCULATOR SECTION-------------
+  //-----------------------------------------------------------
 
-  //////////////////////////////INSURANCE PREMIUM CALCULATOR SECTION//////////////////////////////
   let points=11;
   let premium;
 
-  //Brands and models
+  //Brands and models. MVP: yamaha, honda and vespa only
   const vehicleBrandModel = () => {
       const inputValue = $("#brand").val();
       if (inputValue.toLowerCase() === "yamaha") {
@@ -191,11 +198,10 @@ $(() => {
         points += 18;
         //can add for Y125, others, rxz, rxk
       }
-    }
+  }
 
   //Check age
   const checkAge = () => {
-
 
   // Age conditional depending on answer
   const inputValue = $("#age").val();
@@ -221,27 +227,27 @@ $(() => {
       } else if (inputValue >40) {
         points += 2;
       }
-      }
+  }
 
   //Check engine capacity
   const checkCapacity = () => {
 
-      const inputValue = $("#capacity").val();
+    const inputValue = $("#capacity").val();
 
-      if (inputValue <= 125) {
+      if (inputValue <= 125) { //Up to 125 CC
         points += 7;
-      } else if (inputValue <= 200 ) {
+      } else if (inputValue <= 200 ) { //Up to 200 CC
         points += 10;
-      } else if (inputValue <= 400 ) {
+      } else if (inputValue <= 400 ) { //Up to 400 CC
         points += 16;
-      } else if (inputValue <=750 ) {
+      } else if (inputValue <=750 ) {  //Up to 750 CC
         points += 26;
-      } else if (inputValue > 750) {
+      } else if (inputValue > 750) {  //More than 750 CC
         points += 35;
       }
-    }
+  }
 
-  //Type of insurance
+  //Types of insurance
   const checkTypeOfInsurance = () => {
 
       const inputValue = $("#insurance").val();
@@ -253,7 +259,7 @@ $(() => {
       } else if (inputValue.toLowerCase() === "third party") {
         points += 25;
       }
-    }
+  }
 
   //Check claim experience. Still need to include the other columns
   const checkClaimExperience = () => {
@@ -262,12 +268,12 @@ $(() => {
 
       if (inputValue <= 10000) {
         points+=0;
-      } else if ((inputValue > 10000) && (inputValue <=20000)) {
+      } else if (inputValue <=20000) {
         points += 25;
-      } else if (inputValue > 20000) {
+      } else {
         return("Will have to check with underwriter");
       }
-    }
+  }
 
   //Riding experience
   const ridingExperience = () => {
@@ -279,8 +285,7 @@ $(() => {
       } else if (inputValue >= 2) {
         points += 0;
       }
-
-    }
+  }
 
   //check premium cost for NTUC. Can work on it by specifying each point
   const checkPremium = (x) => {
@@ -323,7 +328,7 @@ $(() => {
       ridingExperience();
       vehicleBrandModel();
       checkPremium(points);
-    };
+  };
 
   //Reset Points for insurance prem calculation
   const pointsReset = () => {
@@ -331,7 +336,10 @@ $(() => {
   }
 
 
-//////////////////////////////BUTTONS//////////////////////////////
+  //-----------------------------------------------------------
+  //-----------------------BUTTONS-----------------------------
+  //-----------------------------------------------------------
+
   //TO CLEAR DISPLAY
   const clearDisplay = () => {
     $("#lineChart").hide();
@@ -420,6 +428,10 @@ $(() => {
   });
 
 }) //CLOSING DONT DELETE
+
+
+
+
 
 
 
