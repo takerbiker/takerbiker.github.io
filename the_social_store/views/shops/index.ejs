@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+    </head>
+    <body>
+        <!-- Link to add new shop -->
+        <nav class="leftAlign">
+                <a href="/shops/new">Create a New Shop</a>
+        </nav>
+        <!-- Display Section -->
+        <h1>Shop responsible! Shop social!</h1>
+
+        <div class="container">
+            <div class="row">
+                 <% for(let i = 0; i < shops.length; i++){ %>
+                    <div class="col smallerContainer">
+                        <!-- TO LINK IMAGE TO THE SHOW PAGE -->
+                        <a href="/shops/<%=shops[i].id; %>"> 
+                        <img src="<%=shops[i].img%>"></a></br>
+                        <%=shops[i].name; %></br>
+                        Description: <%=shops[i].description; %></br>
+                        Type: <%=shops[i].type; %></br>
+                        Website: <%=shops[i].website; %></br> 
+                        Products: <%=shops[i].products; %></br>   
+                        <a href="/shops/<%=shops[i].id; %>">Show</a>                 
+                    </div>
+                    <% } %>           
+            </div>
+        </div>
+        
+    </body>
+    <footer>
+    </footer>
+
+</html>
+

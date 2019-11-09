@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    </head>
+    <body>
+        <h1>Shop Page</h1>
+        <div class="container">
+            <%=shop.name; %> </br>
+                <div class="smallContainer">
+
+                    <!-- Image, Description, Price -->
+                    <img src="<%=shop.img%>"></br>
+                    <%=shop.description; %> </br>
+                    Website: <%=shop.website; %></br> 
+                    Products: <%=shop.products; %></br> 
+                    <!-- <b>Price: </b>$<%=shop.description; %> </br> -->
+
+                    <!-- Quantity if 0, show out of stock, if not show remaining!
+                    <% if (shop.qty === 0) { %>
+                        Out of stock bro!
+                    <% } else { %>
+                        <b><%=shop.qty; %> remaining! </b></br>
+                    <% } %> -->
+
+
+
+
+
+
+
+
+                    <!-- Edit Button -->
+                    <form action="/shops/<%=shop.id; %>/edit">
+                        <input type="submit" value="Edit"/>
+                    </form>
+
+                    <!-- Delete button -->
+                    <form action="/shops/<%=shop.id; %>?_method=DELETE" method="POST">
+                        <input type="submit" value="DELETE"/>
+                    </form>
+
+                </div>
+        </div>
+
+
+        <nav>
+            <a href="/shops">Back to Products</a>
+        </nav>
+    </body>
+    <footer>
+    </footer>
+</html>

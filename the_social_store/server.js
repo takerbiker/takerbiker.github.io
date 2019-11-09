@@ -2,10 +2,10 @@
 const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
-
+const bodyParser = require('body-parser');
 const methodOverride = require('method-override');
-app.use(methodOverride('_method'));
-app.use(express.static('public'));
+
+// app.use(express.static('public'));
 
 /////////////////////////////////////////////////////
 // MAKE SURE MIDDLEWARE IS BEFORE CONTROLLER FILES.//
@@ -14,13 +14,16 @@ app.use(express.static('public'));
 
 //Middleware
 app.use(express.urlencoded({ extended: true }));
+app.use(methodOverride('_method'));
+// app.use(express.static('public'));
+app.use(bodyParser.json());
 
 //To linkController
-const productsController = require('./controllers/products.js');
-app.use('/products', productsController);
+const shopsController = require('./controllers/shops.js');
+app.use('/shops', shopsController);
 
-//Mongoose
-const mongoURI = 'mongodb://localhost:27017/mongooseStore';
+//Databse, Mongoose
+const mongoURI = 'mongodb://localhost:27017/theSocialStore';
 
 mongoose.connect(
 	mongoURI,
@@ -37,17 +40,17 @@ mongoose.connection.once('open', () => {
 	console.log('connected to mongo');
 });
 
-//Express-session
-const session = require('express-session');
-app.use(
-	session({
-		secret            : 'takerbiker shahrani',
-		resave            : false,
-		saveUninitialized : false
-	})
-);
+// //Express-session
+// const session = require('express-session');
+// app.use(
+// 	session({
+// 		secret            : 'takerbiker shahrani',
+// 		resave            : false,
+// 		saveUninitialized : false
+// 	})
+// );
 
 //Listener
 app.listen(3000, () => {
-	console.log('Product list is listening ');
+	console.log('The Social Store is listening ');
 });

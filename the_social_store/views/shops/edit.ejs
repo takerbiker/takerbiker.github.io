@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+
+        <head>
+            <title>Edit Product</title>
+        </head>
+
+
+    <body>
+        <h1>Edit Product Page</h1>
+        <div class = "container showP">
+            <form action="/shops/<%=shop.id%>?_method=PUT" method="POST">
+                Name: <input type="text" name="name" value="<%=shop.name%>"/><br/>
+                Description: <input type="textarea" name="description" value="<%=shop.description%>"/><br/>
+                Type: <input type="text" name="type" value="<%=shop.type%>"/><br/>
+                Products: <input type="text" name="products" value="<%=shop.products%>"/><br/>
+                Website: <input type="text" name="website" value="<%=shop.website%>"/><br/>
+                Image: <input type="url" name="img" value="<%=shop.img%>" /> </br>
+
+                <input type="submit" name="" value="Submit Changes"/>
+            </form>
+        </div>
+
+    </body>
+    <footer>
+    </footer>
+</html>

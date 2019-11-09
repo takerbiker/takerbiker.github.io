@@ -15,7 +15,7 @@ $(() => {
     $(".tableOutput").prepend($title);
 
     //Create tableheader on click
-    $(".tableHeader").append($("<th>Name</th>").append);
+    $(".tableHeader").append($("<th>Name</th>"));
     $(".tableHeader").append($("<th>Amount (S$)</th>"));
 
     for (let i=0;i<=data.length-1;i++) {
