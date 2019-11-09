@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <% include ./partials/head.ejs %>
+        <% include ./partials/nav.ejs %>
+    </head>
+    <body>
+        <h1>Products list</h1>
+        <form action="/products" method="POST">
+            Name: <input type="text" name="name" /><br/>
+            Description: <input type="textarea" name="description" /><br/>
+            Image: <input type="url" name="img" /><br/>
+            Price: <input type="number" name="price" /><br/>
+            Quantity: <input type="number" name="qty" /><br/>
+            <input type="submit" name="" value="Create Product"/>
+        </form>
+        <a href="/products">Back</a>
+    </body>
+    <footer>
+        <% include ./partials/footer.ejs %>
+    </footer>
+</html>

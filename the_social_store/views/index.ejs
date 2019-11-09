@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <% include ./partials/head.ejs %>
+        <% include ./partials/nav.ejs %>
+    </head>
+    <body>
+        <!-- Link to add new product -->
+        <nav class="leftAlign">
+        </nav>
+        <!-- Display Section -->
+        <h1>Shop</h1>
+
+        <div class="container">
+            <div class="row">
+                 <% for(let i = 0; i < products.length; i++){ %>
+                    <div class="col smallerContainer">
+                        <%=products[i].name; %></br>
+                        <!-- TO LINK IMAGE TO THE SHOW PAGE -->
+                        <a href="/products/<%=products[i].id; %>"> 
+                        <img src="<%=products[i].img%>"></a></br>
+                        <!-- DESCRIPTION, PRICE, QTY -->
+                        <!-- <%=products[i].description; %></br> -->
+                        Price: $<%=products[i].price; %></br>
+                        <!-- Quantity: <%=products[i].qty; %><br> -->
+                        </br>
+                        </br>
+                    
+   
+                    </div>
+                    <% } %>           
+            </div>
+        </div>
+        
+    </body>
+    <footer>
+        <% include ./partials/footer.ejs %>
+    </footer>
+
+</html>
