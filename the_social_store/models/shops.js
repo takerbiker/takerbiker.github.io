@@ -1,10 +1,11 @@
 const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
 
-const shopSchema = new mongoose.Schema({
-	name        : { type: String, required: true },
+const shopSchema = new Schema({
+	shopName    : { type: String },
 	description : String,
-	type        : String,
-	products    : String,
+	socialCause : String,
+	products    : [{type: Schema.Types.ObjectId, ref: "Product"}],
 	website     : String,
 	img         : String
 });

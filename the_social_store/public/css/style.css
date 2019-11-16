@@ -1,1 +1,23 @@
+* {
+	text-align: center;
+	padding: 5px;
+}
+
+body {
+	/* padding-top: 65px; */
+}
+
+.jumbotron {
+	/* margin-top: 20px; */
+}
+.smallerContainer {
+	background-color: lightblue;
+	margin: 3px;
+	padding: 2px;
+}
+
+img {
+	height: 150px;
+}
+
 

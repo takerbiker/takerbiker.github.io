@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" href="/css/style.css">
+    </head>
+    <body>
+    <!-- Navigation      -->
+    <nav>
+    </nav>
+    <main>
+        <ul>
+          <li>
+            <% if(currentUser) { %>
+            <h1>Hi <%=currentUser.username%>!</h1> 
+                <form action="/sessions?_method=DELETE" method="POST">
+                          <input type="submit" value="Log out" class=""/>
+                </form>
+                <a href="/shops/">Shops</a><br/>
+                <a href="/products">Products</a><br/>
+
+                <% } else { %>
+                  <a class="" href="/users/new">Sign Up</a></h2>
+                  <a class="" href="/sessions/new">Log In</a>
+                <% } %>
+          </li>
+        </ul>
+    </main>          
+
+      <!-- <div> -->
+      <!-- Display Section -->
+      <!-- <div class="jumbotron">
+            <div class="container">
+                <h1 class="display-3">Shop with a purpose</h1>
+                <p>This is a template for a simple marketing or informational website. If you can't stop shopping, you might as well shop for a good and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
+                <a class="btn btn-primary btn-lg" href="#" role="button">About us</a>
+            </div>
+      </div>        -->
+
+    </body>
+    <footer>
+    </footer>
+
+</html>

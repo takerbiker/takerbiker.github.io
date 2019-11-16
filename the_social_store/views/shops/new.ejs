@@ -1,19 +1,31 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" href="/css/style.css">
     </head>
     <body>
-        <h1>Invent list</h1>
+            <div class="container">
         <form action="/shops" method="POST">
-            Name: <input type="text" name="name" /><br/>
+            <h1>Create a new shop!</h1>
+            Shop Name: <input type="text" name="shopName" /><br/>
             Description: <input type="textarea" name="description" /><br/>
-            Type: <input type="text" name="type" /><br/>
+            How we do good: <input type="text" name="socialCause" /><br/>
             Products: <input type="text" name="products" /><br/>
-            Website: <input type="url" name="website" /><br/>
-            Image: <input type="url" name="img" /><br/>
-            <input type="submit" name="" value="Create Shop"/>
+            Website: <input type="text" name="website" /><br/>
+            Image: <input type="text" name="img" /><br/>
+            <input type="submit" name="submit" value="Create Shop"/>
         </form>
+    </div>
+
+
+
+
+
+
+    <nav>
         <a href="/shops">Back</a>
+    </nav>
     </body>
     <footer>
     </footer>

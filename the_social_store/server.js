@@ -4,8 +4,8 @@ const app = express();
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const methodOverride = require('method-override');
-
-// app.use(express.static('public'));
+const session = require('express-session');
+require('dotenv').config();
 
 /////////////////////////////////////////////////////
 // MAKE SURE MIDDLEWARE IS BEFORE CONTROLLER FILES.//
@@ -15,14 +15,30 @@ const methodOverride = require('method-override');
 //Middleware
 app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride('_method'));
-// app.use(express.static('public'));
+app.use(express.static('public'));
 app.use(bodyParser.json());
+app.use(
+	session({
+		secret            : process.env.SECRET,
+		resave            : false,
+		saveUninitialized : false
+	})
+);
 
-//To linkController
+//To link Controllers
 const shopsController = require('./controllers/shops.js');
 app.use('/shops', shopsController);
 
-//Databse, Mongoose
+const productsController = require('./controllers/products.js');
+app.use('/products', productsController);
+
+const sessionsController = require('./controllers/sessions.js');
+app.use('/sessions', sessionsController);
+
+const userController = require('./controllers/users.js');
+app.use('/users', userController);
+
+//Database
 const mongoURI = 'mongodb://localhost:27017/theSocialStore';
 
 mongoose.connect(
@@ -40,15 +56,20 @@ mongoose.connection.once('open', () => {
 	console.log('connected to mongo');
 });
 
-// //Express-session
-// const session = require('express-session');
-// app.use(
-// 	session({
-// 		secret            : 'takerbiker shahrani',
-// 		resave            : false,
-// 		saveUninitialized : false
-// 	})
-// );
+//Index
+app.get('/', (req, res) => {
+	res.render('index.ejs', {
+		currentUser : req.session.currentUser
+	});
+});
+
+app.get('/shops', (req, res) => {
+	if (req.session.currentUser) {
+		res.render('/index.ejs');
+	} else {
+		res.redirect('/sessions/new');
+	}
+});
 
 //Listener
 app.listen(3000, () => {

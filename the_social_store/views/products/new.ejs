@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<header>
+			<h1>Create a Product</h1>
+			<nav>
+				<ul>
+					<li>
+						<a href="/">Home</a>
+					</li>
+					<li>
+						<a href="/products">Products Index</a>
+					</li>
+				</ul>
+			</nav>
+		</header>
+		<main>
+			<form action="/products" method="post">
+				<input type="text" placeholder="item" name="item" /><br/>
+				<textarea name="description" placeholder="description" name="description"></textarea><br/>
+				<input type="number" placeholder="price" name="price" /><br/>
+				<input type="number" placeholder="img url" name="img" /><br/>
+				<input type="submit" value="Publish Product"/>
+			</form>
+		</main>
+	</body>
+</html>

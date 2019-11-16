@@ -8,11 +8,13 @@ const Shop = require('../models/shops.js');
 //7 Restful Routes
 //___________________
 
+//CHECKED
 //New route: GET '/shops/new'
 router.get('/new', (req, res) => {
 	res.render('shops/new.ejs');
 });
 
+//CHECKED
 //Create route: POST '/shops'
 router.post('/', (req, res) => {
 	Shop.create(req.body, (err, createdShop) => {
@@ -34,7 +36,9 @@ router.get('/', (req, res) => {
 router.get('/:id', (req, res) => {
 	Shop.findById(req.params.id, (err, foundShop) => {
 		res.render('shops/show.ejs', {
-			shop : foundShop
+			shop : foundShop,
+			product : foundShop.products
+
 		});
 	});
 });
@@ -63,16 +67,16 @@ router.put('/:id', (req, res) => {
 	});
 });
 
-//Buy Route
+// //Buy Route
 
-router.put('/:id/buy', (req, res) => {
-	Shop.findByIdAndUpdate(req.params.id, { $inc: { qty: -1 } }, (err, shop) => {
-		if (err) {
-			console.log(err);
-		}
-		res.redirect('back');
-	});
-});
+// router.put('/:id/buy', (req, res) => {
+// 	Shop.findByIdAndUpdate(req.params.id, { $inc: { qty: -1 } }, (err, shop) => {
+// 		if (err) {
+// 			console.log(err);
+// 		}
+// 		res.redirect('back');
+// 	});
+// });
 
 // //Seed route
 // router.get('/seed', async (req, res) => {
