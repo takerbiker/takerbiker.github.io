@@ -1,30 +1,42 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-        <link rel="stylesheet" type="text/css" href="/css/style.css">
+      <% include ../partials/nav.ejs %>
+      <% include ../partials/head.ejs %>
     </head>
     <body>
-            <div class="container">
-        <form action="/shops" method="POST">
+      <header>
+          <nav>
+              <ul>
+                <li>
+                  <a href="/">Home</a>
+                </li>
+                <li>
+                  <a href="/shops">Shop Index</a>
+                </li>
+              </ul>
+            </nav>
+          </header>
+      </header>
+
+        <div class="container mainNew">
+          <div class="form-group mb-2 formSize">
             <h1>Create a new shop!</h1>
-            Shop Name: <input type="text" name="shopName" /><br/>
-            Description: <input type="textarea" name="description" /><br/>
-            How we do good: <input type="text" name="socialCause" /><br/>
-            Products: <input type="text" name="products" /><br/>
-            Website: <input type="text" name="website" /><br/>
-            Image: <input type="text" name="img" /><br/>
-            <input type="submit" name="submit" value="Create Shop"/>
-        </form>
-    </div>
-
-
-
-
-
+            <form action="/shops" method="POST">
+              Shop Name: <input type="text" class="form-control" name="shopName" /><br/>
+              Description: <input type="textarea" class="form-control" name="description" /><br/>
+              How we do good: <input type="text" class="form-control" name="socialCause" /><br/>
+              Products: <input type="text" class="form-control" name="products" /><br/>
+              Website: <input type="text" class="form-control" name="website" /><br/>
+              Image: <input type="text" class="form-control" name="img" /><br/>
+              <input type="submit" name="submit" value="Create Shop"/>
+            </form>
+          </div>
+        </div>
 
     <nav>
-        <a href="/shops">Back</a>
+        <a href="/shops">Back</a></br>
+        shops/new.ejs
     </nav>
     </body>
     <footer>

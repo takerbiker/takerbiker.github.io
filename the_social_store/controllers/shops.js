@@ -18,7 +18,7 @@ router.get('/new', (req, res) => {
 //Create route: POST '/shops'
 router.post('/', (req, res) => {
 	Shop.create(req.body, (err, createdShop) => {
-		if (err) console.log('error this is!');
+		if (err) console.log('error this is with create route!');
 		res.redirect('/shops');
 	});
 });
@@ -36,9 +36,8 @@ router.get('/', (req, res) => {
 router.get('/:id', (req, res) => {
 	Shop.findById(req.params.id, (err, foundShop) => {
 		res.render('shops/show.ejs', {
-			shop : foundShop,
-			product : foundShop.products
-
+			shop     : foundShop,
+			products : foundShop.products
 		});
 	});
 });

@@ -1,47 +1,44 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-        <link rel="stylesheet" type="text/css" href="/css/style.css">
+        <% include ../partials/nav.ejs %>
+        <% include ../partials/head.ejs %>
     </head>
     <body>
-
-
-        <main>
-
-        <!-- Display Section -->
-        <p>shops/index.ejs.THIS IS WHERE CAN EDIT STUFF BRO. so can look at other shops but can only edit your own one.</p>
-            <!-- Link to add new product -->
+        <div class="container main">
+            <!-- Link to add new shop -->
             <div class="">
-              <a href="/shops/new">Create a New Shop</a>
+                    <a href="/">Home</a>
+                    <a href="/shops/new">Create a New Shop</a>
             </div>
- 
           
-        <!-- To show shops  -->
-        <div class="container">
-            <h3>All Social Shops</h3>
-            <div class="row">
-
-                 <% for(let i = 0; i < shops.length; i++){ %>
-                    <div class="col smallerContainer">
-                        <h3><%=shops[i].shopName; %></h3></br>
-                        <div class="imgSize"> 
+            <!-- To show shops  -->
+            <h3>Shop Directory</h3>
+                <div class="row">
+                    <% for(let i = 0; i < shops.length; i++){ %>
+                        <div class="col smallerContainer">
+                            <div class="imgSize"> 
                             <!-- TO LINK IMAGE TO THE SHOW PAGE -->
                             <a href="/shops/<%=shops[i].id; %>"> 
-                            <img src="<%=shops[i].img%>" class="img-fluid"></a>
-                        </div>    
-                        <div>
-                            <p><%=shops[i].description; %></p></br>
-                            How we do good: <%=shops[i].socialCause; %></br>
-                            Website: <%=shops[i].website; %></br> 
-                            <!-- Products: <img src="<%=shops[i].products; %></br>    -->
+                            <img src="<%=shops[i].img%>" class="img-fluid img-thumb"></a></br>
+                            </div>
+                            <div class="description">
+                                <h6><%=shops[i].shopName; %></h6></br>
+                                <p><%=shops[i].description; %></p></br>
+                                <!-- How we do good: <%=shops[i].socialCause; %></br> -->
+                                <!-- Website: <%=shops[i].website; %></br>  -->
+                                <!-- Products: <img src="<%=shops[i].products; %></br>    -->
+                            </div>
                         </div>
-                    </div>
                     <% } %>           
             </div>
         </div>
-        
+
+        <div>
+        shops/index.ejs
+        </div>
     </body>
+
     <footer>
     </footer>
 

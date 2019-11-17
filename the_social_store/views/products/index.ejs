@@ -1,53 +1,38 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta charset="utf-8">
-		<title></title>
+		<% include ../partials/nav.ejs %>
+		<% include ../partials/head.ejs %>
 	</head>
 	<body>
-		<header>
-			<h3>products/index.ejs</h3>
-			<h1>Products</h1>
-			<nav>
-				<ul>
-					<li>
-						<a href="/">Home</a>
-					</li>
-					<li>
-						<a href="/products/new">Create a new Product</a>
-					</li>
-				</ul>
-			</nav>
-        </header>
-        <main>
-            <h2>List of Products</h2>
-            <!-- <ul>
-                <% for(let i = 0; i < products.length; i++){ %>
-                    <li>
-						<a href="/products/<%=products[i]._id%>"><%=products[i].item%></a>
-						<a href="/products/<%=products[i]._id%>"><%=products[i].description%></a>
-						<a href="/products/<%=products[i]._id%>"><%=products[i].price%></a>
-						<a href="/products/<%=products[i]._id%>"><%=products[i].img%></a>
-                    </li>
-                <% } %>
-			</ul> -->
-			<div class="row">
+        <div class="container main">
+			<!-- Link to add new product -->
+			<div class="">
+				<a href="/">Home</a>
+				<a href="/products/new">Create a new Product</a>
+			</div>
 
+			<!-- To show Products -->
+            <h3>List of Products</h3>
+				<div class="row">
 					<% for(let i = 0; i < products.length; i++){ %>
 					   <div class="col smallerContainer">
-						   <h2><%=products[i].item; %></h2></br>
 						   <div class="imgSize"> 
 							   <!-- TO LINK IMAGE TO THE SHOW PAGE -->
 							   <a href="/products/<%=products[i].id; %>"> 
-							   <img src="<%=products[i].img%>" class="img-fluid"></a>
+							   <img src="<%=products[i].img%>" class="img-fluid img-thumb"></a></br>
 						   </div>    
-						   <div>
-							   <p><%=products[i].description; %></p></br>
-							   Price: $<%=products[i].price; %></br>
+							<div class="description">
+							   <h6><%=products[i].item%></h6>
+							   <!-- <p><%=products[i].description; %></p></br> -->
+							   <p>Price: $<%=products[i].price;%></p>
 						   </div>
 					   </div>
-					   <% } %>           
+					<% } %>           
 			   </div>
-        </main>
+		</div>
+		<div>
+			products/index.ejs
+		</div>
 	</body>
 </html>

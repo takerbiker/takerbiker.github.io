@@ -5,7 +5,7 @@ const shopSchema = new Schema({
 	shopName    : { type: String },
 	description : String,
 	socialCause : String,
-	products    : [{type: Schema.Types.ObjectId, ref: "Product"}],
+	products    : [{ type: Schema.Types.ObjectId, ref: 'Product' }],
 	website     : String,
 	img         : String
 });

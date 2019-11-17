@@ -1,34 +1,47 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-        <link rel="stylesheet" type="text/css" href="/css/style.css">
+        <% include ../partials/nav.ejs %>
+        <% include ../partials/head.ejs %>
     </head>
     <body>
-        <div class="container">
-            <h1>shops/show.ejs</h1>
-            <%= shop.shopName %></br>
-            <img src="<%=shop.img%>" class="img-fluid"></a></br>
-            <%= shop.description %></br>
-            <%= shop.socialCause %></br>
-            Products: <%= shop.products %></br>
-            <label for=""></label>
-            <%= shop.website %></br>
+        <div class="container-fluid main">
+            <h1>Shop Profile</h1>
+            <div class="row displayArea">
+                <div class="col-sm">
+                    <img src="<%=shop.img%>" class="img-fluid imgMedium"></br>
+                </div>
+                <div class="col-sm showDescription">
+                    <h3><%= shop.shopName %></h3>
+                    <p>Description: <%= shop.description %></p>
+                    <p>How we do good: <%= shop.socialCause %></p>
 
+                    <!-- Drop down here -->
+                    <label for="<%= products %>">Choose products</label>
+                        <select name="products" name="<% products.item %> ">
+                            <option value="">--Choose products</option>
+                            <% for (let i=0; i< shop.products.length; i++) { %>
+                                <option value="<%products.item%>"><%= products.item %></option>
+                            <% } %>
+                        </select></br>
+                    <%= shop.website %></br>
 
-            <!-- Delete button -->
-            <form action="/shops/<%=shop.id; %>?_method=DELETE" method="POST">
-                        <input type="submit" value="DELETE"/>
-            </form>
-            <!-- Edit button -->
-            <form action="/shops/<%=shop.id; %>/edit">
-                <input type="submit" value="Edit"/>
-            </form>
+                    <!-- Edit button -->
+                    <form action="/shops/<%=shop.id; %>/edit">
+                                            <input type="submit" class="form-control" value="Edit"/>
+                    </form>
+                    <!-- Delete button -->
+                    <form action="/shops/<%=shop.id; %>?_method=DELETE" method="POST">
+                        <input type="submit" class="form-control" value="DELETE"/>
+                    </form>
 
+                </div>
+            </div>
         </div>
 
         <nav>
-            <a href="/shops">Back to Shop Listings</a>
+            <a href="/shops">Back to Shop Listings</a></br>
+            shops/show.ejs
         </nav>
     </body>
     <footer>
