@@ -15,6 +15,8 @@ body {
 .navbar-dark .navbar-nav .nav-link {
 	color: black;
 	text-align: right;
+	font-family: 'Jomolhari', serif;
+	font-size: 1.2em;
 }
 
 .navbar-dark .navbar-ot .navbar-nav .nav-link {
@@ -25,9 +27,11 @@ body {
 /* For the navigation brand */
 .navbar-dark .navbar-brand {
 	color: black;
+	font-family: 'Permanent Marker', cursive;
+	font-size: 2rem;
 }
 
-Body .jumbotron {
+.jumbotron {
 	background: url(../../img/b.jpg) no-repeat center;
 	background-size: cover;
 	padding-top: 20%;
@@ -62,6 +66,10 @@ Body .jumbotron {
 /* .image-thumb {
 	width: 150px;
 	height: 150px;
+} */
+
+/* .topImg {
+	max-width: 200px;
 } */
 
 .imageSize {
