@@ -11,18 +11,15 @@ body {
 	font-family: 'Lato', sans-serif;
 }
 
-/* .jumbotron {
-	background-image: url(../img/a.jpg);
-	background-size: cover;
-	margin-top: 90px;
+/* .navbar-inner {
+	background: transparent;
 } */
 
-.coverImg {
-	background-color: orange;
-	height: 600px;
-	background-image: url(/img/a.jpg);
-	/* background-size: cover;
-	background-repeat: no-repat; */
+.jumbotron {
+	background: url(../../img/b.jpg) no-repeat center;
+	background-size: cover;
+	padding-top: 20%;
+	padding-bottom: 20%;
 }
 
 .coverWords {

@@ -3,10 +3,40 @@
     <head>
         <!-- <% include ./partials/nav.ejs %> -->
         <% include ./partials/head.ejs %>
+
     </head>
     <body>
     <!-- Navigation      -->
+      <nav class="navbar navbar-expand-md fixed-top">
+          <!-- <nav class="navbar  navbar-dark bg-dark fixed-top"> -->
 
+          <div class="navbar-inner">
+              <!-- <div class="container"> -->
+                <a class="navbar-brand" href="#">The Social Store</a>
+                <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+                </button> -->
+                <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+                  <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                      <a class="nav-link" href="/shops">Shops</a>
+                    </li>
+        
+                    <li class="nav-item">
+                        <a class="nav-link" href="/products">Products</a>
+                      </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="#">About us</a>
+                    </li>  
+                  </ul>
+                  <!-- <form class="form-inline my-2 my-lg-0">
+                    <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+                  </form> -->
+                </div>
+              <!-- </div> -->
+          </div>
+      </nav>
 
     <!-- Main -->
     <!-- Display Section -->
@@ -27,12 +57,12 @@
               </div>
             </div>        
                 <% } else { %>
-                  <div class="jumbotron coverImg">
+                  <div class="jumbotron ">
                       <div class="container coverWords">
                           <h1 class="display-3">Shop with a purpose.</h1>
                           <p>If you can't stop shopping, you might as well shop for a good cause. With the Social Store, you can shop with over 300 of our partners and do some good while coughing out those moolah!</p>
                           <a class="btn btn-primary btn-lg" href="#" role="button">About us</a>
-                          <a class="btn btn-primary btn-lg" href="#" role="button">Shops</a>
+                          <a class="btn btn-primary btn-lg" href="#" role="button">Shops</a> 
                       </div>
                   </div>   
                   <div class="container">

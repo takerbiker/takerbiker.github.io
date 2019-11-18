@@ -18,17 +18,17 @@
 
                     <!-- Drop down here -->
                     <label for="<%= products %>">Choose products</label>
-                        <select name="products" name="<% products.item %> ">
-                            <option value="">--Choose products</option>
-                            <% for (let i=0; i< shop.products.length; i++) { %>
-                                <option value="<%products.item%>"><%= products.item %></option>
+                        <select name="product" id="product">
+                            <option value="">Choose products</option>
+                            <% for (let i=0; i< products.length; i++) { %>
+                                <option value="<%products[i].item%>"><%= products[i].item %></option>
                             <% } %>
                         </select></br>
                     <%= shop.website %></br>
 
                     <!-- Edit button -->
                     <form action="/shops/<%=shop.id; %>/edit">
-                                            <input type="submit" class="form-control" value="Edit"/>
+                        <input type="submit" class="form-control" value="Edit"/>
                     </form>
                     <!-- Delete button -->
                     <form action="/shops/<%=shop.id; %>?_method=DELETE" method="POST">
