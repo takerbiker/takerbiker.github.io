@@ -11,11 +11,23 @@ body {
 	font-family: 'Lato', sans-serif;
 }
 
-/* .navbar-inner {
-	background: transparent;
-} */
+/* Navigation */
+.navbar-dark .navbar-nav .nav-link {
+	color: black;
+	text-align: right;
+}
 
-.jumbotron {
+.navbar-dark .navbar-ot .navbar-nav .nav-link {
+	color: white;
+	text-align: right;
+}
+
+/* For the navigation brand */
+.navbar-dark .navbar-brand {
+	color: black;
+}
+
+Body .jumbotron {
 	background: url(../../img/b.jpg) no-repeat center;
 	background-size: cover;
 	padding-top: 20%;
