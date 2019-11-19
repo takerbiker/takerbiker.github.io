@@ -26,6 +26,12 @@
 					Description: <textarea name="description" class="form-control" placeholder="description" ><%=product.description%></textarea><br/>
 					Price: $<input type="number" name="price" class="form-control" placeholder="price"  value="<%=product.price%>"/><br/>
 					Image url:<input type="text" name="img" class="form-control" placeholder="img"  value="<%=product.img%>"/><br/>
+					<label for="shops">Shop Name:</label>
+                    <select name="shops" id="shops">
+                            <% for (let i=0; i< shops.length; i++) { %>
+                                <option value="<%shops[i]._id%>"><%= shops[i].shopName %></option>
+                            <% } %>
+					</select>
 					<input type="submit" class="form-control btn-custom" value="Update Product"/>
 				</form>
 			</div>

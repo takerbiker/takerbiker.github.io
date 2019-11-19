@@ -31,10 +31,20 @@
                     Products: <input type="text" name="products" class="form-control" value="<%=shop.products%>"/><br/>
                     Website: <input type="url" name="website" class="form-control" value="<%=shop.website%>"/><br/>
                     Image: <input type="url" name="img" class="form-control" value="<%=shop.img%>" /> </br>
+                    <label for="products">Products:</label>
+                    <select name="products" id="products">
+                        <option value="">Choose products</option>
+                            <% for (let i=0; i< shop.products.length; i++) { %>
+                                <option value="<%shop.products[i]._id%>"><%= shop.products[i].item %></option>
+                            <% } %>
+                    </select>
                     <input type="submit" name="" class="form-control btn-custom" value="Submit Changes"/>
                 </form>
             </div>
         </div>
+
+ 
+
 
         <nav>
             <a href="/shops">Back to Shop Listings</a></br>

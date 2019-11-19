@@ -31,15 +31,21 @@ router.delete('/:id', (req, res) => {
 	});
 });
 
-//edit
+//Edit route
 router.get('/:id/edit', (req, res) => {
-	Product.findById(req.params.id, (err, foundProduct) => {
-		res.render('products/edit.ejs', {
-			product : foundProduct
+	Product.findById(req.params.id).populate('shop').exec((err, foundProduct) => {
+		console.log(foundProduct);
+
+		Shop.find({}, (err, foundShops) => {
+			res.render('products/edit.ejs', {
+				product : foundProduct,
+				shops   : foundShops
+			});
 		});
 	});
 });
 
+//Update
 router.put('/:id', (req, res) => {
 	Product.findByIdAndUpdate(req.params.id, req.body, () => {
 		res.redirect('/products');
@@ -49,13 +55,12 @@ router.put('/:id', (req, res) => {
 //Show route
 router.get('/:id', (req, res) => {
 	Product.findById(req.params.id).populate('shop').exec((err, foundProduct) => {
+		if (err) {
+			console.log('error: ', err);
+		}
 		console.log(foundProduct);
-
-		Shop.find({}, (err, foundShops) => {
-			res.render('products/show.ejs', {
-				product : foundProduct,
-				shops   : foundShops
-			});
+		res.render('products/show.ejs', {
+			product : foundProduct
 		});
 	});
 });

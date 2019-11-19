@@ -13,18 +13,11 @@
 					</div>
 					<div class="col-sm showDescription">
 						<h3><%=product.item%></h3>
+						<h6>by <i><% for (let i=0; i< product.shop.length; i++ ) { %> 
+							<%=product.shop[i].shopName %>
+						<% } %></i></h6>
 						<p><%=product.description%></p>
 						<p>$<%=product.price%></p>
-
-						<!-- Drop down here -->
-						<label for="shops">Shop Name</label>
-						<select name="shops" id="shops">
-							<option value="">Choose shops</option>
-								<% for (let i=0; i< shops.length; i++) { %>
-									
-									<option value="<% shops[i]._id%>"><%= shops[i].shopName %></option>
-								<% } %>
-						</select></br>
 
 
 						<div class="buttonContainer">

@@ -15,17 +15,14 @@
                     <h3><%= shop.shopName %></h3>
                     <p>Description: <%= shop.description %></p>
                     <p>How we do good: <%= shop.socialCause %></p>
-
-                    <!-- Drop down here -->
-                    <label for="products">Products:</label>
-                        <select name="products" id="products">
-                            <!-- <option value="">Choose products</option> -->
+                        Products:
+                        <li>
                             <% for (let i=0; i< shop.products.length; i++) { %>
-                                <option value="<%shop.products[i]._id%>"><%= shop.products[i].item %></option>
+                            <i><%= shop.products[i].item %></i>
                             <% } %>
-                        </select></br>
-                    <%= shop.website %></br>
-                    
+                        </li></br>
+                    <a href="<%=shop.website%>"><p>Website</p></a>
+
                     <div class="buttonContainer">
                         <!-- Edit button -->
                         <form action="/shops/<%=shop.id; %>/edit">

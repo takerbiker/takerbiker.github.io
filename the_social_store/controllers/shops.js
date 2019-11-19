@@ -1,8 +1,9 @@
 const express = require('express');
 const router = express.Router();
 
-//Require Shop model
+//Require Shop and product model
 const Shop = require('../models/shops.js');
+const Product = require('../models/products.js');
 
 //___________________
 //7 Restful Routes
@@ -32,19 +33,6 @@ router.get('/', (req, res) => {
 	});
 });
 
-//D
-//Show route: GET '/shops/:id'
-router.get('/:id', (req, res) => {
-	Shop.findById(req.params.id).populate('products').exec((err, foundShop) => {
-		if (err) {
-			console.log('error: ', err);
-		}
-		res.render('shops/show.ejs', {
-			shop : foundShop
-		});
-	});
-});
-
 //Delete route: DELETE '/shops/:id'
 router.delete('/:id', (req, res) => {
 	Shop.findByIdAndRemove(req.params.id, (err, data) => {
@@ -53,11 +41,25 @@ router.delete('/:id', (req, res) => {
 });
 
 //Edit route: GET '/shops/:id/edit'
+// router.get('/:id/edit', (req, res) => {
+// 	Shop.findById(req.params.id, (err, foundShop) => {
+// 		//find the shop
+// 		res.render('shops/edit.ejs', {
+// 			shop : foundShop
+// 		});
+// 	});
+// });
+
+//Edit route
 router.get('/:id/edit', (req, res) => {
-	Shop.findById(req.params.id, (err, foundShop) => {
-		//find the shop
-		res.render('shops/edit.ejs', {
-			shop : foundShop
+	Shop.findById(req.params.id).populate('products').exec((err, foundShop) => {
+		console.log(foundShop);
+
+		Product.find({}, (err, foundProducts) => {
+			res.render('shops/edit.ejs', {
+				shop     : foundShop,
+				products : foundProducts
+			});
 		});
 	});
 });
@@ -79,40 +81,17 @@ router.put('/:id', (req, res) => {
 // 	});
 // });
 
-// //Seed route
-// router.get('/seed', async (req, res) => {
-// 	const newShops = [
-// 		{
-// 			name        : 'Hello Flowers',
-// 			description : 'Sell flowers',
-// 			industry    : 'Gifting',
-// 			website     : 'www.eatandsip.co',
-// 			products    : 'Flower Bouquets',
-// 			img         :
-// 				'https://cdn3.bigcommerce.com/s-a6pgxdjc7w/products/1075/images/967/416130__50605.1467418920.1280.1280.jpg?c=2'
-// 		},
-// 		{
-// 			name        : 'Bones',
-// 			description : "It's just a bag of bones.",
-// 			img         : 'http://bluelips.com/prod_images_large/bones1.jpg',
-// 			price       : 25,
-// 			qty         : 0
-// 		},
-// 		{
-// 			name        : 'Bins',
-// 			description : 'A stack of colorful bins for your beans and bones.',
-// 			img         : 'http://www.clipartbest.com/cliparts/9cz/rMM/9czrMMBcE.jpeg',
-// 			price       : 7000,
-// 			qty         : 1
-// 		}
-// 	];
-
-// 	try {
-// 		const seedItems = await Shop.create(newShops);
-// 		res.send(seedItems);
-// 	} catch (err) {
-// 		res.send(err.message);
-// 	}
-// });
+//D
+//Show route: GET '/shops/:id'
+router.get('/:id', (req, res) => {
+	Shop.findById(req.params.id).populate('products').exec((err, foundShop) => {
+		if (err) {
+			console.log('error: ', err);
+		}
+		res.render('shops/show.ejs', {
+			shop : foundShop
+		});
+	});
+});
 
 module.exports = router;

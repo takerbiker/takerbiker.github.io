@@ -71,12 +71,9 @@ app.get('/shops', (req, res) => {
 	}
 });
 
+//About us page
 app.get('/about', (req, res) => {
-	if (req.session.currentUser) {
-		res.render('/about.ejs');
-	} else {
-		res.redirect('/about.ejs');
-	}
+	res.render('about.ejs');
 });
 
 //Listener
