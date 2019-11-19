@@ -71,6 +71,14 @@ app.get('/shops', (req, res) => {
 	}
 });
 
+app.get('/about', (req, res) => {
+	if (req.session.currentUser) {
+		res.render('/about.ejs');
+	} else {
+		res.redirect('/about.ejs');
+	}
+});
+
 //Listener
 app.listen(3000, () => {
 	console.log('The Social Store is listening ');

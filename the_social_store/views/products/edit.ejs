@@ -5,22 +5,34 @@
 		<% include ../partials/head.ejs %>
 	</head>
 	<body>
-		<div class="container main">
-			<!-- <div class="row"> -->
-			<a href="/">Home</a>
-			<a href="/products">Products Index</a>
-			<h2>Edit Product Listing</h2>
-			<form action="/products/<%=product._id%>?_method=PUT" method="post">
-					Item: <input type="text" name="item" placeholder="item" value="<%=product.item%>"/><br/>
-					Description: <textarea name="description" placeholder="description" ><%=product.description%></textarea><br/>
-					Price: $<input type="number" name="price" placeholder="price"  value="<%=product.price%>"/><br/>
-					Image url:<input type="text" name="img" placeholder="img"  value="<%=product.img%>"/><br/>
-					<input type="submit" value="Update Product"/>
-			</form>
-			<!-- </div> -->
+		<header>
+                    <nav>
+                        <ul>
+                          <li>
+                            <a href="/">Home</a>
+                          </li>
+                          <li>
+                            <a href="/products">Product Index</a>
+                          </li>
+                        </ul>
+                      </nav>
+        </header>
+
+		<div class="container mainNew">
+			<div class="form-group mb-2 formSize">
+				<h2>Edit Product Listing</h2>
+				<form action="/products/<%=product._id%>?_method=PUT" method="post">
+					Item: <input type="text" name="item" class="form-control" placeholder="item" value="<%=product.item%>"/><br/>
+					Description: <textarea name="description" class="form-control" placeholder="description" ><%=product.description%></textarea><br/>
+					Price: $<input type="number" name="price" class="form-control" placeholder="price"  value="<%=product.price%>"/><br/>
+					Image url:<input type="text" name="img" class="form-control" placeholder="img"  value="<%=product.img%>"/><br/>
+					<input type="submit" class="form-control btn-custom" value="Update Product"/>
+				</form>
+			</div>
 		</div>
+		
 		<nav>
-			products/edit.ejs
+			<a href="/products">Back to Product Listings</a></br>
 		</nav>
 	</body>
 </html>

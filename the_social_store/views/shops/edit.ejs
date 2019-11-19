@@ -4,24 +4,40 @@
         <% include ../partials/nav.ejs %>
         <% include ../partials/head.ejs %>
     </head>
-
+  
+  
+                    
     <body>
-        <div class="container main">
-            <h1>Edit Shop</h1>
+        <header>
+                    <nav>
+                        <ul>
+                          <li>
+                            <a href="/">Home</a>
+                          </li>
+                          <li>
+                            <a href="/shops">Shop Index</a>
+                          </li>
+                        </ul>
+                      </nav>
+        </header>
+
+        <div class="container mainNew">
+            <div class="form-group mb-2 formSize">
+                <h1>Edit Shop</h1>
                 <form action="/shops/<%=shop.id%>?_method=PUT" method="POST">
-                Name: <input type="text" name="shopName" value="<%=shop.shopName%>"/><br/>
-                Description: <input type="text" name="description" value="<%=shop.description%>"/><br/>
-                How we do good: <input type="text" name="socialCause" value="<%=shop.socialCause%>"/><br/>
-                Products: <input type="text" name="products" value="<%=shop.products%>"/><br/>
-                Website: <input type="url" name="website" value="<%=shop.website%>"/><br/>
-                Image: <input type="url" name="img" value="<%=shop.img%>" /> </br>
-                <input type="submit" name="" value="Submit Changes"/>
+                    Name: <input type="text" name="shopName" class="form-control" value="<%=shop.shopName%>"/><br/>
+                    Description: <textarea name="description" class="form-control" value="<%=shop.description%>"/><%=shop.description%></textarea>
+                    How we do good: <textarea name="socialCause" class="form-control" value="<%=shop.socialCause%>"/><%=shop.socialCause%></textarea><br/>
+                    Products: <input type="text" name="products" class="form-control" value="<%=shop.products%>"/><br/>
+                    Website: <input type="url" name="website" class="form-control" value="<%=shop.website%>"/><br/>
+                    Image: <input type="url" name="img" class="form-control" value="<%=shop.img%>" /> </br>
+                    <input type="submit" name="" class="form-control btn-custom" value="Submit Changes"/>
                 </form>
+            </div>
         </div>
 
         <nav>
             <a href="/shops">Back to Shop Listings</a></br>
-            shops/edit.ejs
         </nav>
 
     </body>

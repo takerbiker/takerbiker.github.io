@@ -17,23 +17,25 @@
                     <p>How we do good: <%= shop.socialCause %></p>
 
                     <!-- Drop down here -->
-                    <label for="<%= products %>">Choose products</label>
-                        <select name="product" id="product">
-                            <option value="">Choose products</option>
-                            <% for (let i=0; i< products.length; i++) { %>
-                                <option value="<%products[i].item%>"><%= products[i].item %></option>
+                    <label for="products">Products:</label>
+                        <select name="products" id="products">
+                            <!-- <option value="">Choose products</option> -->
+                            <% for (let i=0; i< shop.products.length; i++) { %>
+                                <option value="<%shop.products[i]._id%>"><%= shop.products[i].item %></option>
                             <% } %>
                         </select></br>
                     <%= shop.website %></br>
-
-                    <!-- Edit button -->
-                    <form action="/shops/<%=shop.id; %>/edit">
-                        <input type="submit" class="form-control" value="Edit"/>
-                    </form>
-                    <!-- Delete button -->
-                    <form action="/shops/<%=shop.id; %>?_method=DELETE" method="POST">
-                        <input type="submit" class="form-control" value="DELETE"/>
-                    </form>
+                    
+                    <div class="buttonContainer">
+                        <!-- Edit button -->
+                        <form action="/shops/<%=shop.id; %>/edit">
+                            <input type="submit" class="form-control btn-custom" value="Edit"/>
+                        </form>
+                        <!-- Delete button -->
+                        <form action="/shops/<%=shop.id; %>?_method=DELETE" method="POST">
+                            <input type="submit" class="form-control btn-custom" value="DELETE"/>
+                        </form>
+                    </div>
 
                 </div>
             </div>
@@ -41,7 +43,6 @@
 
         <nav>
             <a href="/shops">Back to Shop Listings</a></br>
-            shops/show.ejs
         </nav>
     </body>
     <footer>

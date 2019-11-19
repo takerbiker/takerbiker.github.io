@@ -1,12 +1,10 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <!-- <% include ./partials/nav.ejs %> -->
         <% include ./partials/head.ejs %>
     </head>
     <body>
-    <!-- Navigation -->
-    <nav class="navbar navbar-expand-md navbar-dark fixed-top menuWords">
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top">
         <a class="navbar-brand" href="#">The Social Store</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -23,50 +21,79 @@
             <li class="nav-item">
               <a class="nav-link" href="#">About us</a>
             </li>  
+            <li class="nav-item">
+                <a class="nav-link" href="/sessions/new">Log In</a>
+            </li> 
+            <!-- <li class="nav-item">
+                <a class="nav-link" href="/users/new">Sign Up</a>
+            </li>  -->
           </ul>
-          <!-- <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-            <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
-          </form> -->
         </div>
-</nav>
+    </nav>
 
-    <!-- Main -->
     <!-- Display Section -->
-    <!-- <div class="container"> -->
             <% if(currentUser) { %>
-            <div class="container main">
-              <div class="containerW">
+              <!-- Display navigation bar -->
+              <nav class="navbar navbar-ot navbar-expand-md navbar-dark bg-custom fixed-top">
+                  <a class="navbar-brand" href="/">The Social Store</a>
+                  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                  </button>
+                
+                  <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+                    <ul class="navbar-nav  ml-auto">
+                      <li class="nav-item">
+                        <a class="nav-link" href="/shops">Shops</a>
+                      </li>
+                      <li class="nav-item">
+                          <a class="nav-link" href="/products">Products</a>
+                        </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="#">About us</a>
+                      </li>  
+                      <li class="nav-item">
+                          <form action="/sessions?_method=DELETE" method="POST">
+                            <input type="submit" value="Log out" class="nav-link background"/>
+                          </form>
+                        </li>  
+                    </ul>
+                  </div>
+              </nav>
+
+              <form action="/sessions?_method=DELETE" method="POST">
+                <input type="submit" value="Log out" class=""/>
+            </form>
+
+
+              <!-- Display Container Area -->
+              <div class="container card main" style="width:40rem;">
+                <div class="containerW card-body">
                 <h1>Hi <%=currentUser.username%>!</h1> 
                 <p>What would you like to do today?</p>
                   <div class="buttonContainer">
-                    <a href="/shops/" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Edit Shops</a>
-                    <a href="/products/" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Edit Products</a></br>
+                    <a href="/shops/" class="btn btn-secondary btn-lg btn-custom" role="button" aria-pressed="true">Edit Shops</a>
+                    <a href="/products/" class="btn btn-secondary btn-lg btn-custom" role="button" aria-pressed="true">Edit Products</a></br>
                   </div>
-                <form action="/sessions?_method=DELETE" method="POST">
+                <!-- <form action="/sessions?_method=DELETE" method="POST">
                     <input type="submit" value="Log out" class=""/>
-                </form>
-              </div>
-            </div>        
+                </form> -->
+                </div>
+              </div>        
                 <% } else { %>
                   <div class="jumbotron ">
                       <div class="container coverWords">
-                          <h1 class="display-3">Shop with a purpose.</h1>
-                          <p>If you can't stop shopping, you might as well shop for a good cause. With the Social Store, you can shop with over 300 of our partners and do some good while coughing out those moolah!</p>
-                          <a class="btn btn-primary btn-lg" href="#" role="button">About us</a>
-                          <a class="btn btn-primary btn-lg" href="#" role="button">Shops</a> 
+                          <h1 class="display-3 mindful">Mindful Shopping</h1>
+                          <div class="container words">
+                            <p class="">If you can't stop shopping, you might as well shop for a good cause.
+                              With the Social Store, </br>you can shop with over 300 of our partners and do some good while coughing out those moolah!</p>
+                          </div>
+                          <a class="btn btn-primary btn-custom btn-lg" href="/" role="button">About us</a>
+                          <a class="btn btn-primary btn-custom btn-lg" href="/shops" role="button">Shops</a> 
                       </div>
                   </div>   
-                  <div class="container">
-                    <a class="" href="/users/new">Sign Up</a></h2>
-                    <a class="" href="/sessions/new">Log In</a>
-                  </div>
                 <% } %>
-      <!-- </div>           -->
 
   
     </body>
-    <footer>
-    </footer>
 
 </html>

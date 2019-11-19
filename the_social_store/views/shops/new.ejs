@@ -16,27 +16,26 @@
                 </li>
               </ul>
             </nav>
-          </header>
       </header>
 
-        <div class="container mainNew">
+        <div class="container mainNew ">
           <div class="form-group mb-2 formSize">
-            <h1>Create a new shop!</h1>
+            <h1>Create a new shop!</h1><br/>
             <form action="/shops" method="POST">
               Shop Name: <input type="text" class="form-control" name="shopName" /><br/>
-              Description: <input type="textarea" class="form-control" name="description" /><br/>
-              How we do good: <input type="text" class="form-control" name="socialCause" /><br/>
-              Products: <input type="text" class="form-control" name="products" /><br/>
+              Description: <textarea class="form-control" name="description" /></textarea><br/>
+              How we do good: <textarea class="form-control" name="socialCause" /></textarea><br/>
+              Products: 
+              <input type="text" class="form-control" name="products" /><br/>
               Website: <input type="text" class="form-control" name="website" /><br/>
               Image: <input type="text" class="form-control" name="img" /><br/>
-              <input type="submit" name="submit" value="Create Shop"/>
+              <input type="submit" name="submit" class="btn-custom" value="Create Shop"/>
             </form>
           </div>
         </div>
 
     <nav>
         <a href="/shops">Back</a></br>
-        shops/new.ejs
     </nav>
     </body>
     <footer>

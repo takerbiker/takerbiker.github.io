@@ -1,21 +1,18 @@
-/* font-family: 'Nova Round', cursive;
-font-family: 'Roboto', sans-serif;
-font-family: 'Alata', sans-serif; */
-
 * {
 	text-align: center;
 	/* padding: 5px; */
 }
 
 body {
-	font-family: 'Lato', sans-serif;
+	font-family: 'Jomolhari', serif;
+	/* font-family: 'Aleo', serif; */
 }
 
 /* Navigation */
 .navbar-dark .navbar-nav .nav-link {
-	color: black;
+	color: white;
 	text-align: right;
-	font-family: 'Jomolhari', serif;
+	font-family: 'Aleo', serif;
 	font-size: 1.2em;
 }
 
@@ -26,13 +23,21 @@ body {
 
 /* For the navigation brand */
 .navbar-dark .navbar-brand {
-	color: black;
+	color: white;
 	font-family: 'Permanent Marker', cursive;
 	font-size: 2rem;
 }
 
+.bg-custom {
+	background-color: rgb(61, 92, 172);
+}
+
+.background {
+	background-color: rgb(61, 92, 172);
+}
+
 .jumbotron {
-	background: url(../../img/b.jpg) no-repeat center;
+	background: url(../../img/melt.jpg) no-repeat center;
 	background-size: cover;
 	padding-top: 20%;
 	padding-bottom: 20%;
@@ -41,6 +46,16 @@ body {
 .coverWords {
 	top: 50%;
 	bottom: 50%;
+	/* color: black; */
+}
+
+.mindful {
+	color: black;
+	font-family: 'Permanent Marker', cursive;
+}
+
+.buttonContainer {
+	padding: 5px;
 }
 
 .btn {
@@ -48,43 +63,49 @@ body {
 }
 
 .buttonContainer {
-	margin: 5px;
+	margin: 15px;
 }
 
+/* 
 .smallerContainer {
 	background-color: pink;
-	margin: 3px;
+	margin: 1px;
 	padding: 2px;
-	max-width: 250px;
-	max-height: 250px;
-}
+} */
 
 .main {
 	margin-top: 80px;
 }
 
-/* .image-thumb {
-	width: 150px;
-	height: 150px;
-} */
+.words {
+	/* background-color: white; */
+	display: block;
+	max-width: 900px;
+	padding-top: 5px;
+	/* opacity: 0.5; */
+	font-size: 1.1rem;
+	font-family: 'Jomolhari', serif;
+}
 
-/* .topImg {
-	max-width: 200px;
-} */
+.topImg {
+	max-width: 300px;
+}
 
-.imageSize {
-	width: 150px;
-	height: 150px;
+.imgSize {
+	max-width: 300px;
+	max-height: 300px;
 }
 
 .img-thumb {
 	width: 150px;
 	height: 150px;
+	object-fit: cover;
+	/* border-radius: 28px; */
 }
 
 .imgMedium {
-	width: 400px;
-	height: 400px;
+	width: 500px;
+	height: 500px;
 	object-fit: cover;
 }
 
@@ -97,12 +118,27 @@ body {
 	margin: 35px;
 }
 
+.description {
+	padding-top: 5px;
+}
+
 .mainNew {
 	display: block;
-	padding-top: 15px;
+	padding-top: 25px;
 }
 
 .formSize {
 	width: 50%;
 	margin: auto;
+}
+
+.btn-custom {
+	background-color: rgb(61, 92, 172);
+	border-color: rgb(61, 92, 172);
+	color: white;
+	margin: 2px;
+}
+
+a {
+	color: rgb(61, 92, 172);
 }

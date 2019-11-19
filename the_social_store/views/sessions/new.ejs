@@ -5,12 +5,12 @@
         <% include ../partials/head.ejs %>
     </head>
     <body>
-      <div class="container card main">
-        <img src="/img/e.jpg" class="card-img-top" alt="the social store log in">
+      <div class="container card main" style="width:40rem;">
+        <img src="/img/pug.jpg" class="card-img-top" alt="the social store log in">
         <div class="card-body">
           <form class="col s12 form-signin" action="/sessions/" method="POST">
           <h1 class="h3 mb-3 font-weight-normal">Admin Log In</h1>
-                <input placeholder="Admin username" id="username" type="text" class="validate" name="username" required>
+                <input placeholder="username" id="username" type="text" class="validate" name="username" required>
                 <label for="username" class="sr-only">User Name</label></br>
                 <input placeholder="password" id="password" type="password" class="validate" name="password" required>
                 <label for="password" class="sr-only">Password</label></br>

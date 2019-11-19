@@ -11,7 +11,7 @@ const Shop = require('../models/shops.js');
 //CHECKED
 //New route: GET '/shops/new'
 router.get('/new', (req, res) => {
-	res.render('shops/new.ejs');
+	res.render('shops/new.ejs', {});
 });
 
 //CHECKED
@@ -32,12 +32,15 @@ router.get('/', (req, res) => {
 	});
 });
 
+//D
 //Show route: GET '/shops/:id'
 router.get('/:id', (req, res) => {
-	Shop.findById(req.params.id, (err, foundShop) => {
+	Shop.findById(req.params.id).populate('products').exec((err, foundShop) => {
+		if (err) {
+			console.log('error: ', err);
+		}
 		res.render('shops/show.ejs', {
-			shop     : foundShop,
-			products : foundShop.products
+			shop : foundShop
 		});
 	});
 });
@@ -67,7 +70,6 @@ router.put('/:id', (req, res) => {
 });
 
 // //Buy Route
-
 // router.put('/:id/buy', (req, res) => {
 // 	Shop.findByIdAndUpdate(req.params.id, { $inc: { qty: -1 } }, (err, shop) => {
 // 		if (err) {

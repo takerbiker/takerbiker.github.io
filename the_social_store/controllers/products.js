@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Product = require('../models/products.js');
+const Shop = require('../models/shops.js');
 
 //___________________
 //7 Restful Routes
@@ -45,10 +46,16 @@ router.put('/:id', (req, res) => {
 	});
 });
 
+//Show route
 router.get('/:id', (req, res) => {
-	Product.findById(req.params.id, (err, foundProduct) => {
-		res.render('products/show.ejs', {
-			product : foundProduct
+	Product.findById(req.params.id).populate('shop').exec((err, foundProduct) => {
+		console.log(foundProduct);
+
+		Shop.find({}, (err, foundShops) => {
+			res.render('products/show.ejs', {
+				product : foundProduct,
+				shops   : foundShops
+			});
 		});
 	});
 });
