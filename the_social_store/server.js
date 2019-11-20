@@ -56,16 +56,26 @@ mongoose.connection.once('open', () => {
 	console.log('connected to mongo');
 });
 
-//Index
+//Welcome route
 app.get('/', (req, res) => {
 	res.render('index.ejs', {
 		currentUser : req.session.currentUser
 	});
 });
 
+// Shops app route
 app.get('/shops', (req, res) => {
 	if (req.session.currentUser) {
-		res.render('/index.ejs');
+		res.render('shops/index.ejs');
+	} else {
+		res.redirect('/sessions/new');
+	}
+});
+
+// Products app route
+app.get('/products', (req, res) => {
+	if (req.session.currentUser) {
+		res.render('products/index.ejs');
 	} else {
 		res.redirect('/sessions/new');
 	}

@@ -28,8 +28,20 @@ body {
 	font-size: 2rem;
 }
 
+.btn-logout {
+	width: 100%;
+	padding: 2px 0px !important;
+	text-align: right !important;
+}
+
 .bg-custom {
 	background-color: rgb(61, 92, 172);
+}
+
+.navbar-collapse .navbar-nav {
+	/* display: inline-block; */
+	text-align: center;
+	/* margin: auto; */
 }
 
 .background {
