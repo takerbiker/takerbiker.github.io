@@ -25,10 +25,17 @@
               Shop Name: <input type="text" class="form-control" name="shopName" /><br/>
               Description: <textarea class="form-control" name="description" /></textarea><br/>
               How we do good: <textarea class="form-control" name="socialCause" /></textarea><br/>
-              Products: 
-              <input type="text" class="form-control" name="products" /><br/>
+              <!-- Products: 
+              <input type="text" class="form-control" name="products" /><br/> -->
               Website: <input type="text" class="form-control" name="website" /><br/>
               Image: <input type="text" class="form-control" name="img" /><br/>
+                  <!-- <label for="products">Products:</label>
+                    <select name="products" id="products">
+                        <option value="">Choose products</option>
+                            <% for (let i=0; i< products.length; i++) { %>
+                                <option value="<%products[i]._id%>"><%= products[i].item %></option>
+                            <% } %>
+                    </select><br/> -->
               <input type="submit" name="submit" class="btn-custom" value="Create Shop"/>
             </form>
           </div>

@@ -12,7 +12,20 @@ const Product = require('../models/products.js');
 //CHECKED
 //New route: GET '/shops/new'
 router.get('/new', (req, res) => {
-	res.render('shops/new.ejs', {});
+	Shop.findById(req.params.id).populate('product').exec((err, foundShop) => {
+		console.log(foundShop);
+		if (err) {
+			console.log('error: ', err);
+		}
+
+		Product.find({}, (err, foundProducts) => {
+			console.log(foundProducts);
+			res.render('shops/new.ejs', {
+				shop     : foundShop,
+				products : foundProducts
+			});
+		});
+	});
 });
 
 //CHECKED
@@ -20,6 +33,7 @@ router.get('/new', (req, res) => {
 router.post('/', (req, res) => {
 	Shop.create(req.body, (err, createdShop) => {
 		if (err) console.log('error this is with create route!');
+
 		res.redirect('/shops');
 	});
 });
@@ -40,25 +54,19 @@ router.delete('/:id', (req, res) => {
 	});
 });
 
-//Edit route: GET '/shops/:id/edit'
-// router.get('/:id/edit', (req, res) => {
-// 	Shop.findById(req.params.id, (err, foundShop) => {
-// 		//find the shop
-// 		res.render('shops/edit.ejs', {
-// 			shop : foundShop
-// 		});
-// 	});
-// });
-
 //Edit route
 router.get('/:id/edit', (req, res) => {
-	Shop.findById(req.params.id).populate('products').exec((err, foundShop) => {
-		console.log(foundShop);
+	Shop.findById(req.params.id).populate('product').exec((err, foundShop) => {
+		// console.log(foundShop);
+		if (err) {
+			console.log('error: ', err);
+		}
 
 		Product.find({}, (err, foundProducts) => {
+			console.log(foundProducts);
 			res.render('shops/edit.ejs', {
-				shop     : foundShop,
-				products : foundProducts
+				shop        : foundShop,
+				allProducts : foundProducts
 			});
 		});
 	});

@@ -25,20 +25,26 @@
             <div class="form-group mb-2 formSize">
                 <h1>Edit Shop</h1>
                 <form action="/shops/<%=shop.id%>?_method=PUT" method="POST">
-                    Name: <input type="text" name="shopName" class="form-control" value="<%=shop.shopName%>"/><br/>
+                    Shop Name: <input type="text" name="shopName" class="form-control" value="<%=shop.shopName%>"/><br/>
                     Description: <textarea name="description" class="form-control" value="<%=shop.description%>"/><%=shop.description%></textarea>
                     How we do good: <textarea name="socialCause" class="form-control" value="<%=shop.socialCause%>"/><%=shop.socialCause%></textarea><br/>
-                    Products: <input type="text" name="products" class="form-control" value="<%=shop.products%>"/><br/>
-                    Website: <input type="url" name="website" class="form-control" value="<%=shop.website%>"/><br/>
-                    Image: <input type="url" name="img" class="form-control" value="<%=shop.img%>" /> </br>
+                    Website: <input type="text" name="website" class="form-control" value="<%=shop.website%>"/><br/>
+                    Image: <input type="text" name="img" class="form-control" value="<%=shop.img%>"/> </br>
+                    
                     <label for="products">Products:</label>
-                    <select name="products" id="products">
-                        <option value="">Choose products</option>
-                            <% for (let i=0; i< shop.products.length; i++) { %>
-                                <option value="<%shop.products[i]._id%>"><%= shop.products[i].item %></option>
+            
+                    <select name="products" value="<%=shop.products%>">
+                            <% for (let i=0; i< allProducts.length; i++) { %>
+                                <% if (String(allProducts[i]._id)==String(shop.products)) { %>
+                                    <option value="<%=allProducts[i]._id%>" selected><%= allProducts[i].item %></option>
+                                <% } else { %>
+                                    <option value="<%=allProducts[i]._id%>"><%= allProducts[i].item %></option>
+                                <% } %>
                             <% } %>
-                    </select>
-                    <input type="submit" name="" class="form-control btn-custom" value="Submit Changes"/>
+                        </select> 
+                     
+
+                    <input type="submit" class="form-control btn-custom" value="Submit Changes"/>
                 </form>
             </div>
         </div>

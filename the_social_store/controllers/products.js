@@ -15,9 +15,23 @@ router.get('/', (req, res) => {
 	});
 });
 
+//New
 router.get('/new', (req, res) => {
-	res.render('products/new.ejs');
+	Product.findById(req.params.id).populate('shop').exec((err, foundProduct) => {
+		// console.log(foundProduct);
+
+		Shop.find({}, (err, foundShops) => {
+			res.render('products/new.ejs', {
+				product : foundProduct,
+				shops   : foundShops
+			});
+		});
+	});
 });
+
+// router.get('/new', (req, res) => {
+// 	res.render('products/new.ejs', {});
+// });
 
 router.post('/', (req, res) => {
 	Product.create(req.body, (err, createdProduct) => {

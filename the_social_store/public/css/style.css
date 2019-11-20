@@ -61,6 +61,10 @@ body {
 	/* color: black; */
 }
 
+main {
+	margin-top: 100px;
+}
+
 .mindful {
 	color: black;
 	font-family: 'Permanent Marker', cursive;
@@ -87,6 +91,11 @@ body {
 
 .main {
 	margin-top: 80px;
+}
+
+.containerAbout {
+	width: 800px;
+	background: url(../../img/melt.jpg) no-repeat center;
 }
 
 .words {
