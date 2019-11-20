@@ -1,11 +1,15 @@
 * {
 	text-align: center;
+	/* overflow: hidden; */
 	/* padding: 5px; */
 }
 
 body {
 	font-family: 'Jomolhari', serif;
 	/* font-family: 'Aleo', serif; */
+	/* margin: 0;
+	padding: 0; */
+	/* max-height: 100vh; */
 }
 
 /* Navigation */
@@ -49,16 +53,11 @@ body {
 }
 
 .jumbotron {
-	background: url(../../img/melt.jpg) no-repeat center;
+	background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url(../../img/busy-shopping-mall.jpg) center;
 	background-size: cover;
+	/* min-height: 300px; */
 	padding-top: 20%;
 	padding-bottom: 20%;
-}
-
-.coverWords {
-	top: 50%;
-	bottom: 50%;
-	/* color: black; */
 }
 
 main {
@@ -66,7 +65,7 @@ main {
 }
 
 .mindful {
-	color: black;
+	color: white;
 	font-family: 'Permanent Marker', cursive;
 }
 
@@ -93,10 +92,10 @@ main {
 	margin-top: 80px;
 }
 
-.containerAbout {
+/* .containerAbout {
 	width: 800px;
 	background: url(../../img/melt.jpg) no-repeat center;
-}
+} */
 
 .words {
 	/* background-color: white; */

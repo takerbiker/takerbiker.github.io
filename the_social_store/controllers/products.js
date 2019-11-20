@@ -7,6 +7,7 @@ const Shop = require('../models/shops.js');
 //7 Restful Routes
 //___________________
 
+// Index
 router.get('/', (req, res) => {
 	Product.find({}, (err, allProducts) => {
 		res.render('products/index.ejs', {
@@ -19,11 +20,14 @@ router.get('/', (req, res) => {
 router.get('/new', (req, res) => {
 	Product.findById(req.params.id).populate('shop').exec((err, foundProduct) => {
 		// console.log(foundProduct);
+		if (err) {
+			console.log('error: ', err);
+		}
 
 		Shop.find({}, (err, foundShops) => {
 			res.render('products/new.ejs', {
-				product : foundProduct,
-				shops   : foundShops
+				product  : foundProduct,
+				allShops : foundShops
 			});
 		});
 	});
@@ -35,6 +39,7 @@ router.get('/new', (req, res) => {
 
 router.post('/', (req, res) => {
 	Product.create(req.body, (err, createdProduct) => {
+		if (err) console.log('error this is with create route!');
 		res.redirect('/products');
 	});
 });
@@ -48,7 +53,10 @@ router.delete('/:id', (req, res) => {
 //Edit route
 router.get('/:id/edit', (req, res) => {
 	Product.findById(req.params.id).populate('shop').exec((err, foundProduct) => {
-		console.log(foundProduct);
+		// console.log(foundProduct);
+		if (err) {
+			console.log('error: ', err);
+		}
 
 		Shop.find({}, (err, foundShops) => {
 			res.render('products/edit.ejs', {
@@ -62,7 +70,7 @@ router.get('/:id/edit', (req, res) => {
 //Update
 router.put('/:id', (req, res) => {
 	Product.findByIdAndUpdate(req.params.id, req.body, () => {
-		res.redirect('/products');
+		res.redirect('/products/' + req.params.id);
 	});
 });
 

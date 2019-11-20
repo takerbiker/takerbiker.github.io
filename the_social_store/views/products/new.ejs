@@ -25,10 +25,11 @@
 					<textarea name="description" class="form-control" placeholder="description" name="description"></textarea><br/>
 					<input type="number" class="form-control" placeholder="price" name="price" /><br/>
 					<input type="text" class="form-control" placeholder="img url" name="img" /><br/>
-					<label for="shops">Shop Name:</label>
-                    <select name="shops" id="shops">
-                            <% for (let i=0; i< shops.length; i++) { %>
-                                <option value="<%shops[i]._id%>"><%= shops[i].shopName %></option>
+					<label for="shop">Shop Name:</label>
+                    <select name="shop" id="shop">
+						<option value="">Choose shop</option>
+                            <% for (let i=0; i< allShops.length; i++) { %>
+                                <option value="<%=allShops[i]._id%>"><%= allShops[i].shopName %></option>
                             <% } %>
 					</select></br>
 					<input type="submit" class="btn btn-primary btn-custom" value="Create Product"/>

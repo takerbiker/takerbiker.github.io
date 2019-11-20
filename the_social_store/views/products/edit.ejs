@@ -27,10 +27,11 @@
 					Price: $<input type="number" name="price" class="form-control" placeholder="price"  value="<%=product.price%>"/><br/>
 					Image url:<input type="text" name="img" class="form-control" placeholder="img"  value="<%=product.img%>"/><br/>
 					<label for="shop">Shop Name:</label>
-					<select name="shops" value="<%=product.shops%>">
+					<select name="shop" value="<%product.shopName%>">
                             <% for (let i=0; i< allShops.length; i++) { %>
-                                <% if (String(allShops[i]._id)==String(product.shops)) { %>
-                                    <option value="<%=allShops[i]._id%>" selected><%= allShops[i].shopName %></option>
+								<% if (String(allShops[i]._id)===String(product.shop)) { %>
+									console.log(product.shop);
+                                    <option value="<%=allShops[i]._id%>" selected><%= allShops[i].shopName %></option> 
                                 <% } else { %>
                                     <option value="<%=allShops[i]._id%>"><%= allShops[i].shopName %></option>
                                 <% } %>
