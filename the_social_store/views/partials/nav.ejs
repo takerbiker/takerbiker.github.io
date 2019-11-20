@@ -15,6 +15,17 @@
                 <li class="nav-item ">
                   <a class="nav-link" href="/about">About us</a>
                 </li>  
+                <!-- <% if(currentUser) { %> -->
+                <li class="nav-item">
+                    <form action="/sessions?_method=DELETE" method="POST">
+                      <button type="submit" value="Log out" class="btn btn-link navbar-btn nav-link btn-logout background"/>Log Out</button>
+                    </form>
+                </li>  
+                <!-- <% } else { %>  -->
+                <li class="nav-item">
+                    <a class="nav-link" href="/sessions/new">Log In</a>
+                </li>   
+                <!-- <% } %> -->
               </ul>
               <!-- <form class="form-inline my-2 my-lg-0">
                 <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">

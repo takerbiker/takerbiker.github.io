@@ -32,7 +32,6 @@
                     Image: <input type="text" name="img" class="form-control" value="<%=shop.img%>"/> </br>
                     
                     <label for="products">Products:</label>
-            
                     <select name="products" value="<%=shop.products%>">
                             <% for (let i=0; i< allProducts.length; i++) { %>
                                 <% if (String(allProducts[i]._id)==String(shop.products)) { %>
@@ -41,9 +40,7 @@
                                     <option value="<%=allProducts[i]._id%>"><%= allProducts[i].item %></option>
                                 <% } %>
                             <% } %>
-                        </select> 
-                     
-
+                    </select> 
                     <input type="submit" class="form-control btn-custom" value="Submit Changes"/>
                 </form>
             </div>

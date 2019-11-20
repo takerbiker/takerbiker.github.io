@@ -52,8 +52,8 @@ router.get('/:id/edit', (req, res) => {
 
 		Shop.find({}, (err, foundShops) => {
 			res.render('products/edit.ejs', {
-				product : foundProduct,
-				shops   : foundShops
+				product  : foundProduct,
+				allShops : foundShops
 			});
 		});
 	});
