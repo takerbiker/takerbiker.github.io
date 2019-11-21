@@ -4,6 +4,7 @@
         <% include ./partials/head.ejs %>
     </head>
     <body>
+    <!-- Navigation -->
     <nav class="navbar navbar-expand-md navbar-dark fixed-top">
         <a class="navbar-brand" href="#">The Social Store</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
@@ -65,8 +66,8 @@
 
 
               <!-- Display Container Area -->
-              <div class="container card main" style="width:40rem;">
-                <div class="containerW card-body">
+              <div class="container-fluid card main " style="width:40rem;">
+                <div class="card-body">
                 <h1>Hi <%=currentUser.username%>!</h1> 
                 <p>What would you like to do today?</p>
                   <div class="buttonContainer">
@@ -91,8 +92,5 @@
                       </div>
                   </div>   
                 <% } %>
-
-  
     </body>
-
 </html>

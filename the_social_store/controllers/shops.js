@@ -102,4 +102,17 @@ router.get('/:id', (req, res) => {
 	});
 });
 
+//IF NOT LOGGED IN
+//Show route: GET '/shops/:id'
+router.get('/:id', (req, res) => {
+	Shop.findById(req.params.id).populate('products').exec((err, foundShop) => {
+		if (err) {
+			console.log('error: ', err);
+		}
+		res.render('shops/shownotlogged.ejs', {
+			shop : foundShop
+		});
+	});
+});
+
 module.exports = router;
