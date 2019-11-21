@@ -41,9 +41,15 @@ router.post('/', (req, res) => {
 //Index route: GET '/shops'
 router.get('/', (req, res) => {
 	Shop.find({}, (err, allShops) => {
-		res.render('shops/index.ejs', {
-			shops : allShops
-		});
+		if (req.session.currentUser) {
+			res.render('shops/index.ejs', {
+				shops : allShops
+			});
+		} else {
+			res.render('shops/indexnotlogged.ejs', {
+				shops : allShops
+			});
+		}
 	});
 });
 
@@ -96,22 +102,15 @@ router.get('/:id', (req, res) => {
 		if (err) {
 			console.log('error: ', err);
 		}
-		res.render('shops/show.ejs', {
-			shop : foundShop
-		});
-	});
-});
-
-//IF NOT LOGGED IN
-//Show route: GET '/shops/:id'
-router.get('/:id', (req, res) => {
-	Shop.findById(req.params.id).populate('products').exec((err, foundShop) => {
-		if (err) {
-			console.log('error: ', err);
+		if (req.session.currentUser) {
+			res.render('shops/show.ejs', {
+				shop : foundShop
+			});
+		} else {
+			res.render('shops/shownotlogged.ejs', {
+				shop : foundShop
+			});
 		}
-		res.render('shops/shownotlogged.ejs', {
-			shop : foundShop
-		});
 	});
 });
 

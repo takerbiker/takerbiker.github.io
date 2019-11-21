@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <!-- <% include ./partials/nav.ejs %> -->
-        <% include ./partials/head.ejs %>
+        <% include ../partials/head.ejs %>
     </head>
     <body>
             <nav class="navbar navbar-ot navbar-expand-md navbar-dark bg-custom fixed-top">
@@ -37,20 +36,42 @@
                       </form> -->
                     </div>
         </nav>
-        <main>
-            <div class="container-fluid words2">
-                <h3 class="sty">About</h1>
-            </div>   
-            <div class="container-fluid ">                    
-                    <div class="container-fluid words2">
-                      <h1 class="titlr">Money is power!</h3>
-                        <h6 class="sty"> As Singaporeans, we all know we love shopping! So why not use that moolah to spread some love by supporting
-                        these social enterprises who have excellent products and an even more outstanding mission!</h6>
-                    </div> 
-                    <div class="jumbotron jumbotron-fluid jumbo2">
-
-                    </div>
+        <div class="container main">
+            <!-- Link to add new shop -->
+            <div class="">
+                <!-- <a href="/shops/new">Create a New Shop</a> -->
+            </br>
             </div>
-        </main>
+            <!-- To show shops  -->
+            <h3>Shop Directory</h3>
+            </br>
+                <div class="row">
+                    <% for(let i = 0; i < shops.length; i++){ %>
+                        <div class="col-md-4 col-sm-3 col-lg-2">
+                            <!-- <div class="imgSize">  -->
+                                <!-- TO LINK IMAGE TO THE SHOW PAGE -->
+                                <a href="/shops/<%=shops[i].id; %>"> 
+                                <img src="<%=shops[i].img%>" class="img-fluid img-thumb shadow"></a>
+                            <!-- </div> -->
+                            <div class="description">
+                                <h6><%=shops[i].shopName; %></h6>
+                                <!-- <p><%=shops[i].description; %></p> -->
+                                <!-- How we do good: <%=shops[i].socialCause; %></br> -->
+                                <!-- Website: <%=shops[i].website; %></br>  -->
+                                <!-- Products: <img src="<%=shops[i].products; %></br>    -->
+                            </div>
+                        </div>
+                    <% } %>           
+            </div>
+        </div>
+
+        <div>
+        <a href="/">Home</a>
+
+        </div>
     </body>
+
+    <footer>
+    </footer>
+
 </html>

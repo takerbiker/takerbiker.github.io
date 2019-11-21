@@ -1,5 +1,6 @@
 * {
 	text-align: center;
+
 	/* overflow: hidden; */
 	/* padding: 5px; */
 }
@@ -52,8 +53,8 @@ body {
 	background-color: rgb(61, 92, 172);
 }
 
-.jumbotron {
-	background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.7)), url(../../img/eaton.jpg);
+.jumbo1 {
+	background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(../../img/eaton.jpg);
 	background-position: 10% 30%;
 	background-size: cover;
 	/* opacity: 80%; */
@@ -62,8 +63,18 @@ body {
 	padding-bottom: 20%;
 }
 
+.jumbo2 {
+	background: url(../../img/shutter.jpg) center;
+	background-size: contain;
+	padding-bottom: 30%;
+}
+
 main {
 	margin-top: 100px;
+}
+
+.sty {
+	font-family: 'Jomolhari', serif;
 }
 
 .mindful {
@@ -95,14 +106,25 @@ main {
 }
 
 .words {
-	/* background-color: white; */
 	display: block;
 	max-width: 900px;
-	padding-top: 5px;
-	/* opacity: 0.5; */
-	font-size: 1.1rem;
-	font-family: 'Jomolhari', serif;
+	margin-top: 10px;
+	font-size: 1.3rem;
 	color: white;
+}
+
+.words2 {
+	display: block;
+	max-width: 900px;
+	margin-top: 10px;
+	margin-bottom: 20px;
+	font-size: 1.4rem;
+	color: black;
+}
+
+.wiseWords {
+	/* background-color: rgba(19, 3, 3, 0.6); */
+	font-family: 'Jomolhari', serif;
 }
 
 .card-img-top {
@@ -129,9 +151,9 @@ main {
 	object-fit: cover;
 }
 
-.blue {
+/* .blue {
 	color: rgb(61, 92, 172);
-}
+} */
 
 .imgMedium {
 	width: 500px;
@@ -144,7 +166,7 @@ main {
 }
 
 .titlr {
-	font-family: 'Permanent Marker', cursive;
+	font-family: 'Aleo', serif;
 }
 
 .showDescription {

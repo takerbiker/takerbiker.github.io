@@ -10,9 +10,15 @@ const Shop = require('../models/shops.js');
 // Index
 router.get('/', (req, res) => {
 	Product.find({}, (err, allProducts) => {
-		res.render('products/index.ejs', {
-			products : allProducts
-		});
+		if (req.session.currentUser) {
+			res.render('products/index.ejs', {
+				products : allProducts
+			});
+		} else {
+			res.render('products/indexnotlogged.ejs', {
+				products : allProducts
+			});
+		}
 	});
 });
 
@@ -33,10 +39,7 @@ router.get('/new', (req, res) => {
 	});
 });
 
-// router.get('/new', (req, res) => {
-// 	res.render('products/new.ejs', {});
-// });
-
+//Create
 router.post('/', (req, res) => {
 	Product.create(req.body, (err, createdProduct) => {
 		if (err) console.log('error this is with create route!');
@@ -44,6 +47,7 @@ router.post('/', (req, res) => {
 	});
 });
 
+//Delete
 router.delete('/:id', (req, res) => {
 	Product.findByIdAndRemove(req.params.id, () => {
 		res.redirect('/products');
@@ -67,9 +71,9 @@ router.get('/:id/edit', (req, res) => {
 	});
 });
 
-//Update
+// Update: PUT '/products/:id'
 router.put('/:id', (req, res) => {
-	Product.findByIdAndUpdate(req.params.id, req.body, () => {
+	Product.findByIdAndUpdate(req.params.id, req.body, { new: true }, (err, updatedProduct) => {
 		res.redirect('/products/' + req.params.id);
 	});
 });
@@ -80,10 +84,17 @@ router.get('/:id', (req, res) => {
 		if (err) {
 			console.log('error: ', err);
 		}
-		console.log(foundProduct);
-		res.render('products/show.ejs', {
-			product : foundProduct
-		});
+		// console.log(foundProduct);
+
+		if (req.session.currentUser) {
+			res.render('products/show.ejs', {
+				product : foundProduct
+			});
+		} else {
+			res.render('products/shownotlogged.ejs', {
+				product : foundProduct
+			});
+		}
 	});
 });
 

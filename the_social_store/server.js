@@ -63,12 +63,12 @@ app.get('/', (req, res) => {
 	});
 });
 
-// Shops app route
+// Shops route
 app.get('/shops', (req, res) => {
 	if (req.session.currentUser) {
 		res.render('shops/index.ejs');
 	} else {
-		res.redirect('/sessions/new');
+		res.redirect('/shops/new');
 	}
 });
 
