@@ -5,7 +5,16 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const methodOverride = require('method-override');
 const session = require('express-session');
+// const db = mongoose.connection;
+
 require('dotenv').config();
+
+//___________________
+//Port
+//___________________
+// Allow use of Heroku's port or your own local port, depending on the environment
+const PORT = process.env.PORT || 3000;
+
 
 /////////////////////////////////////////////////////
 // MAKE SURE MIDDLEWARE IS BEFORE CONTROLLER FILES.//
@@ -38,8 +47,8 @@ app.use('/sessions', sessionsController);
 const userController = require('./controllers/users.js');
 app.use('/users', userController);
 
-//Database
-const mongoURI = 'mongodb://localhost:27017/theSocialStore';
+//Database. Check this
+const mongoURI = process.env.MONGODB_URI || 'mongodb://localhost:27017/theSocialStore';
 
 mongoose.connect(
 	mongoURI,
@@ -87,6 +96,6 @@ app.get('/about', (req, res) => {
 });
 
 //Listener
-app.listen(3000, () => {
-	console.log('The Social Store is listening ');
+app.listen(PORT, () => {
+	console.log('The Social Store is listening on port ', PORT);
 });
